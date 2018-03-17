@@ -4,14 +4,14 @@
 <style>
 html,body {
 	background: #222222;
-	color: dddddd;
+	color: #dddddd;
 	font-family: monospace;
 	font-size: 16px;
 }
 body div {
 	max-width: 400px;
 	margin: auto;
-	margin-top: 200px;
+	margin-top: 10%;
 	border: 1px solid;
 	padding: 1em;
 }
@@ -27,26 +27,43 @@ a {
 }
 a:visited { border-color: #444; }
 a:hover,a:focus { border-color: #f90; }
-ul {
-	list-style-type: none;
-}
-li {
-	margin: .3em;
-}
-li::before {
-	content: "< ";
+ul { list-style-type: none; }
+li { margin: .3em; }
+li::before { content: "» "; }
+@media only screen and (max-width: 400px) {
+	body div {
+		margin: 1em;
+		border: 0;
+	}
+	ul { padding-left: .5em; }
 }
 </style>
 </head>
+
 <body>
+
 <div>
-	<h1>Hello There</h1>
-Check out my:
+<h1>Hello There</h1>
+<p>
+I go by many names, 
+<br>but the one on my birth certificate just <i>may</i> read <b>Joshua Lloret</b>.
+</p>
+<p>
+I am a software engineer from the <b>&gt;</b>Philly area,
+and my current interests are
+<a href="https://www.rust-lang.org/en-US/">rust</a>,
+<a href="https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs">plan9</a>,
+and natural languages.
+</p>
+
+<p>
+Here is some stuff I have made for you, the reader at home:
 	<ul>
 	<li><a href="https://shua.github.io/ssm">livestream muxer</a></li>
 	<li><a href="https://github.com/shua">github</a></li>
-	<li><a href="cv.pdf">résumé</li>
+	<li><a href="cv.pdf">résumé</a></li>
 	</ul>
+</p>
 </div>
 </body>
 </html>
