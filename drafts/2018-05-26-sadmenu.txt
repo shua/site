@@ -1,0 +1,71 @@
+I recently tried out wayland and needed a compositor, so I chose sway because it is tiling, and it works.
+I tried velox a while ago, and I couldn't get it to start or do anything, and there wasn't much help in the wiki. 
+I may try it again, but I just wanted to get up and running with wayland+[some tiling compositor/wm], and sway filled that hole.
+dmenu is a common tool for getting user input as a graphical menu, and the current src is written for X.
+There is a wayland branch that uses the wld lib, and I can't get it to compile (though it's probably something *I've* done).
+I wanted to see how difficult it would be to write dmenu with minimal dependancies, mostly as an exercise for myself.
+
+What I've learned as an initial summary is:
+- to open a window in a desktop wayland environment (what we're probably all working with), you need a shell, and I chose xdg_shell (v6), because I couldn't really find any other option
+- in order to use xdg_shell, I had to generate header and source according to some interface definition that wayland provides, and I made that a simple step in the Makefile
+- once you have the shell, you can create a shell surface, but you need some other surface that actually supplies the graphical bits and bobs
+- I chose egl as the graphical base for this because I am most familiar with GL, but could have used cairo or pango or some other graphics lib
+- you need to create the surfaces and contexts in a very specific order, that kind of makes sense once you've done it successfully, but was confusing and I rewrote it a couple times because I was just getting nothing or cryptic errors
+
+I managed to finally get a window with an openGL triangle which is the equivalent of "hello world" in graphics.
+I really leaned on [weston-simple-egl] and [openglbook-triangle] as well as the docs [docsgl] for getting through the EGL/GL/hooking-wayland-into-gl stuff.
+To make dmenu-type program, I need to be able to draw rectangles, draw text, react to user input, and read from stdin.
+In order to draw text, I need to load and render a font, so I chose the FreeType library.
+Setting that up was also fairly straightforward thanks to [TextRendering] and the FreeType documentation
+You need to load and initialize the FreeType lib, load a fontface, and then you can load a glyph from that font face and get info about that glyph like it's width or a bitmap of it.
+The only other step to this was writing glsl shaders, and I chose to write one that toggles between text drawing and shape drawing.
+With text drawing, I can provide both the screen coords and the texture coords in a single vec4.
+Because I'm only doing 2D drawing, I only need (x,y) coordinates for the screen, and the texture only needs (u,v).
+
+	#version 300 es
+	//glyph vertex shader
+	in vec4 coord;
+	out vec2 texCoord;
+	
+	void main() {
+		gl_Position = vec4(coord.xy, 0, 1);
+		texCoord = coord.zw;
+	}
+
+	#version 300 es
+	//glyph fragment shader
+	in vec2 texCoord;
+	uniform sampler2D tex;
+	uniform vec4 colour;
+	out vec4 fragColour;
+	
+	void main() {
+		fragColour = vec4(1, 1, 1, texture2D(tex, texCoord).r) * colour;
+	}
+
+hopefully that example makes sense.
+
+Cool, so now, I can render shapes *and* fonts to the window.
+The last steps I have to do to get this working are 
+- read from stdin (eazy-peazy)
+- get user input (probably some wayland callback stuff)
+
+I also realized that currently, the window is opened as a normal desktop window,
+ie it gets resized and positioned by sway, and the compositor also paints window decorations on it.
+I don't want either of those things, I want a panel at the top of the screen, so I'll have to see how to do that either by
+1. opening a popup window instead of a toplevel window (who is this popup's parent? will that be an issue?)
+2. setup i3/sway rules to make this window floating/position it as a panel
+
+I haven't figured out which one is easier yet, but I think the long-term solution is probably the popup, so I'm going to try that.
+
+TODO:
+- input
+- stdin args
+- popup window
+- query dpi (hardcoded to 2x right now)
+
+[weston-simple-egl]: https://github.com/wayland-project/weston/blob/master/clients/simple-egl.c
+[openglbook-triangle]: https://github.com/danginsburg/opengles3-book/blob/master/Chapter_2/Hello_Triangle/Hello_Triangle.c
+[docsgl]: http://docs.gl/
+[TextRendering]: https://en.wikibooks.org/wiki/OpenGL_Programming/Modern_OpenGL_Tutorial_Text_Rendering_01
+[wlroots]: https://github.com/swaywm/wlroots/tree/master/examples
