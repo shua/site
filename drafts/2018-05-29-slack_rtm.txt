@@ -1,0 +1,40 @@
+working on trying to use slack from commandline; not great because in order to get "client" scope permission, we need to use oauth 2.0
+anyway, here's how I got "client" scope oauth permission for the entire app 
+(later, may want to just give it limited permissions, and request client permissions on every login? meh)
+
+1. go to app control panel ("Your Apps" -> <the app> -> "OAuth & Permissions")
+2. right-click on "Reinstall App", and copy the link location
+3. modify the `scope` url parameter to read `scope=client`
+4. go to that url, and accept the change in permissions; now the access token will have client permissions
+
+helper function for using slack api
+
+	slackc() {
+		method=$1
+		api=$2
+		shift 2
+		curl -X $method -d "Authorization: Bearer $TOKEN" $@ "https://slack.com/api/$api"
+	}
+
+also,
+
+	npm install wsc
+	alias wsc=<path to node_modules>/wsc/wsc
+
+now, you can call
+
+	TOKEN=<app token, starts with "xoxp-">
+	slackc GET rtm.connect |jq . >rtm.connect.txt
+	wsc $(<rtm.connect.txt jq .url |sed 's/^"//' |sed 's/"$//')
+
+and you've got a slack rtm connection
+I joined an im with myself using the webclient, and got a message in wsc
+
+	< {"type":"im_open","user":"UXXXXXXXX","channel":"DXXXXXXXX","event_ts":"1527543437.000020"}
+
+so I sent a message to myself in wsc
+
+	> { "id": 1, "type": "message", "channel": "DXXXXXXXX", "text": "testing this websocket" }
+
+and it showed up in the webclient
+sick
