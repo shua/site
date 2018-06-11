@@ -9,9 +9,9 @@ html, body {
 body div {
 	max-width: 800px;
 	margin: auto;
-	margin-top: 10%;
-	margin-bottom: 10%;
-	border: 1px solid;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	border: 1px solid #888;
 	padding: 1em;
 }
 body div h1 {
