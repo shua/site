@@ -1,3 +1,4 @@
+* { box-sizing: border-box; }
 html, body {
 	background: #222222;
 	color: #dddddd;
