@@ -1,3 +1,6 @@
 
 %.html: %.md
-	pulldown-cmark <$< >$@
+	 ./render.sh -s "post.css" <$< >$@
+
+index.html: index.md
+	./render.sh -s "/menu.css" <$< >$@
