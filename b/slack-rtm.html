@@ -1,100 +1,74 @@
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="post.css" />
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="post.css" >
 </head>
 <body>
 <div>
-<header>June 6, 2018</header>
+<header> June 6, 2018</header>
 <h1>&gt; slack-rtm</h1>
-<p>
-After learning slack had <a href="https://it.slashdot.org/story/18/03/08/2049255/slack-is-shutting-down-its-irc-gateway">removed support</a> for <a href="https://slack.com/account/gateways">irc gateways</a>, I wanted to see what their alternative was for an api.
-I knew about some of the web API because I've messed around with <a href="https://hubot.github.com/">hubots</a> for various slack orgs I've been in, but I took an nice dive into the docs with the idea that I wanted to send myself a message via curl.
-I ended up using just a little more (needed something that spoke "websocket"), but I'll do a little writeup for what was required to do this.
-</p>
-
+<p>After learning slack had <a href="https://it.slashdot.org/story/18/03/08/2049255/slack-is-shutting-down-its-irc-gateway">removed support</a> for <a href="https://slack.com/account/gateways">irc gateways</a>,
+I wanted to see what their alternative was for an api.
+I knew about some of the web API because I've messed around with <a href="https://hubot.github.com/">hubots</a> for various slack orgs I've been in, but I took a nice dive into the docs with the idea that I wanted to send myself a message via curl.
+I ended up using just a little more (needed something that spoke &quot;websocket&quot;), and here's my little writeup for what was required.</p>
 <h2>APIs</h2>
-<p>
-First thing was figuring out the high-level route, and after some reading of slacks api docs pages, I determined that I'd need
+<p>First thing was figuring out the high-level route, and after some reading of slack api doc pages, I determined that I'd need</p>
 <ol>
-	<li>a slack app, with an auth key that has the proper permissions or oauth scopes (in this case "client")</li>
-	<li>curl the <a href="https://api.slack.com/methods/rtm.connect"><code>rtm.connect</code></a> REST endpoint to get a websocket connection</li>
-	<li>use a websocket client to send a json formatted message event via the <a href="https://api.slack.com/rtm">rtm api</a></li>
+<li>a slack app, with an auth key that has the proper permissions or oauth scopes (in this case &quot;client&quot;)</li>
+<li>curl the <a href="https://api.slack.com/methods/rtm.connect"><code>rtm.connect</code></a> REST endpoint to get a websocket connection</li>
+<li>use  awebsocket client to send a json formatted message event via the <a href="https://api.slack.com/rtm">rtm api</a></li>
 </ol>
-With websockets, REST, and oauth roles it's very 5-years-ago's next-gen web&tm; (and I'm really not sure what today's next-gen web is, but I imagine it's  http 2.0 functional monito blockchains).
-</p>
-
+<p>With websockets, REST, and oauth roles, it's very 5-years-ago's next-gen web™ (and I'm really not sure what today's next-gen web is, but I imagine it's http 2.0 functional monito blockchains).</p>
 <h2>Auth</h2>
-<p>
-Here's what I did to get a token with the correct permissions (it was not obvious, and I wonder if slack will disallow this at some point):
+<p>Here's what I did to get a token with the correct permissions (it was not obvious, and I wonder if slack will disallow this at some point):</p>
 <ol>
-	<li>create a new app if you haven't already <a href="https://api.slack.com/apps">here</a>
-	<li>go to app control panel and open the "Add features and functionality" dropdown and select "Permissions"</li>
-	<li>right-click on <code>Reinstall App</code> button underneath the access token and copy the link location. It should look something like
-	<pre><code>https://slack.com/oauth/authorize?client_id=123456789.9876543&team=TXXXXXXXX&install_redirect=oauth&scope=chat:write:user</code></pre></li>
-	<li>modify the <code>scope</code> url parameter to read <code>scope=client</code>
-	<pre><code>https://slack.com/oauth/authorize?client_id=123456789.9876543&team=TXXXXXXXX&install_redirect=oauth&scope=client</code></pre></li>
-	<li>go to that url in a browser, and accept the change in permissions; now the access token will have <a href="https://api.slack.com/scopes/client">client scope</a></li>
+<li>create a [new app] if you haven't already</li>
+<li>go to app control panel and open the &quot;Add features and functionality&quot; dropdown and select &quot;Permissions&quot;</li>
+<li>right-click on <code>Reinstall App</code> button underneath the access token and copy the link location. It should look something like</li>
 </ol>
-Now you can use the app's token to access a bunch of REST endpoints.
-</p>
-
+<pre><code>https://slack.com/oauth/authorize?client_id=123456789.9876543&amp;team=TXXXXXXXX&amp;install_redirect=oauth&amp;scope=chat:write:user
+</code></pre>
+<ol start="4">
+<li>modify the <code>scope</code> url parameter to read <code>scope=client</code></li>
+</ol>
+<pre><code>https://slack.com/oauth/authorize?client_id=123456789.9876543&amp;team=TXXXXXXXX&amp;install_redirect=oauth&amp;scope=client
+</code></pre>
+<ol start="5">
+<li>visit that url in a browser, and accept the change in permissions; now the access token will have <a href="https://api.slack.com/scopes/client">client scope</a></li>
+</ol>
+<p>Now you can use the app's token to access a bunch of REST endpoints.</p>
 <h2>socket up</h2>
-<p>
-I made a little shell function while I was poking around the REST endpoints, you may find it useful too:
-</p>
-<pre><code
->$ slackc() {
-	method=$1
-	api=$2
-	shift 2
-	curl -X $method -d "Authorization: Bearer $TOKEN" $@ "https://slack.com/api/$api"
+<p>I made a little shell function while I was poking around the REST endpoints, you may find it useful too:</p>
+<pre><code>$ slackc() {
+    method=$1
+    api=$2
+    shift 2
+    curl -X $method -d &quot;Authorization: Bearer $TOKEN&quot; $@ &quot;https://slack.com/api/$api&quot;
 }
 </code></pre>
-<p>
-I chose <a href="https://github.com/danielstjules/wsc"><code>wsc</code></a> as a websocket client because it was easy to install via <code>npm</code> and small.
-</p>
-<pre><code
->$ npm install wsc
-$ alias wsc=<path to node_modules>/wsc/wsc
+<p>I chose <a href="https://github.com/danielstjules/wsc">wsc</a> as a websocket client because it was small and easy to install via <code>npm</code>.</p>
+<pre><code>$ npm install wsc
+$ alias wsc=&lt;path to node_modules&gt;/wsc/wsc
 </code></pre>
-<p>
-Now, you can call
-</p>
-<pre><code
->$ TOKEN=&lt;app token, starts with "xoxp-"&gt;
-$ slackc GET rtm.connect |jq . >rtm.connect.txt
-$ wsc $(&lt;rtm.connect.txt jq .url |sed 's/^"//' |sed 's/"$//')
+<p>Now, you can call</p>
+<pre><code>$ TOKEN=&lt;app token, starts with &quot;xoxp-&quot;&gt;
+$ slackc GET rtm.connect |jq . &gt;rtm.connect.txt
+$ wsc $(&lt;rtm.connect.txt jq .url |sed 's/^&quot;//' |sed 's/&quot;$//')
 </code></pre>
-<p>
-You need to replace <code>&lt;app token...&gt;</code> with your slack app's app token from earlier.
-Here, we call the <code>rtm.connect</code> REST endpoint, which returns some json that has a websocket url among other things.
-The little shell stuff is just extracting the url via <code>jq</code>, and stripping the beginning and ending quotes with <code>sed</code>.
-</p>
-<p>
-Now you've got a slack rtm connection.
-</p>
-
-<h2>Talk to yourself <sub>because no one else will</sub></h2>
-<p>
-I joined an im with myself using the slack webclient, and got an event in <code>wsc</code>
-</p>
-<pre><code
->&lt; {"type":"im_open","user":"UXXXXXXXX","channel":"DXXXXXXXX","event_ts":"1527543437.000020"}
+<p>You need to replace <code>&lt;app token...&gt;</code> with your slack app token which can be found on the app settings page in slack.
+Here we call the <code>rtm.connect</code> REST endpoint, which returns some json that has a websocket url among other things.
+The little shell stuff is there to extract the url via <code>jq</code>, and strip the quote characters with <code>sed</code></p>
+<p>Now you've got a slack rtm connection.</p>
+<h2>Talk to yourself</h2>
+<p>I joined an im with myself using the slack webclient, and got an event in <code>wsc</code></p>
+<pre><code>&lt; {&quot;type&quot;:&quot;im_open&quot;,&quot;user&quot;:&quot;UXXXXXXXX&quot;,&quot;channel&quot;:&quot;DXXXXXXXX&quot;,&quot;event_ts&quot;:&quot;1527543437.000020&quot;}
 </code></pre>
-<p>
-That showed me the channel id I needed <code>DXXXXXXXX</code>, and I sent a message to myself:
-</p>
-<pre><code
->&gt; { "id": 1, "type": "message", "channel": "DXXXXXXXX", "text": "testing this websocket" }
+<p>That showed me the channel id I needed <code>DXXXXXXXX</code>, and I sent a message to myself:</p>
+<pre><code>&gt; { &quot;id&quot;: 1, &quot;type&quot;: &quot;message&quot;, &quot;channel&quot;: &quot;DXXXXXXXX&quot;, &quot;text&quot;: &quot;testing this websocket&quot; }
 </code></pre>
-<p>
-and it showed up in the webclient!
-</p>
-<p>
-sick
-</p>
-<b>-JD</b>
+<p>and it showed up in the webclient!</p>
+<p>sick</p>
+<p><strong>-JD</strong></p>
 </div>
 </body>
 </html>
