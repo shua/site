@@ -1,6 +1,5 @@
 Some blog posts
 ===============
 
-- [slack-rtm](slack-rtm.html)
-- [parser1-PDA](parser1-PDA.html)
-
+- [Parsing 1: PDA](20191109-parser1_PDA.html)
+- [slack-rtm](20180606-slack-rtm.html)
