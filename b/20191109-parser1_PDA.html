@@ -1,0 +1,326 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="post.css" >
+<title>Parsing 1: PDA</title>
+</head>
+<body>
+<div>
+<header>2019 November 9</header>
+<h1>&gt; Parsing 1: PDA</h1>
+<p>While I can't say if this will be usable by anyone but myself, it's some really informal blog posting on my thoughts for making a parser.</p>
+<p>I like coding in C, because it makes me think about Data+Algorithms, and that's a different mindset than when I'm thinking in Type Theory.
+So I tried giving some of this as an informal talk to some coworkers a couple weeks back.
+It was nominally an introduction to yacc, but I think this will be a series of blog posts describing me trying to get some hands on understanding of different ways to build a parser.</p>
+<p>This first post is both very hand-wavy and very nitty-gritty, so buckle up.</p>
+<h2>The Language</h2>
+<p>First, let's look at a langauge that has some really simple stuff I want to be able to parse.</p>
+<pre><code>(t|f)&amp;t
+</code></pre>
+<p>Usually the starter language for parsing is some numeric calculator like dc, simple arithmetic.
+This is even simpler, and my endgoal is quantum circuits, so logical arithmetic is a nice start.</p>
+<p>The language is defined by the following BNF grammar</p>
+<pre><code>expr ::=
+	| 't'
+	| 'f'
+	| '(' expr ')'
+	| '!' expr
+	| expr '&amp;' expr
+	| expr '|' expr
+	;
+</code></pre>
+<p>One nice feature of this is that it's a recursive grammar.
+Simply stated above, it's a <em>left</em> recursive grammar, which will turn out to be really annoying in some future steps.</p>
+<h2>Finite State Machine</h2>
+<p>We can parse this with two states: expecting chars that start an expression, and expecting chars that can come after an expression.
+Let's call these states respectively: <code>S</code> and <code>E</code>.</p>
+<pre><code>  S E
+t E
+f E
+( S
+)   E
+! S
+&amp;   S
+|   S
+</code></pre>
+<p>The table is meant to be read to find the next state given a current state and an input.
+So &quot;I'm in state <code>E</code> and I read in an '&amp;', then the next state is <code>S</code>&quot;.
+If there's no entry in the table, then that indicates a parsing error.</p>
+<p>Here's an implementation in C of that state machine, hopefully you can see the switches correspond to first checking the column in the table, then checking the row.</p>
+<pre><code>typedef enum State { S_S, S_E } State;
+
+int
+parse() {
+	State s;
+	int c;
+
+	while((c=getchar(stdin)) != EOF &amp;&amp;  c != '\n')
+	switch (s) {
+	case S_S: switch (c) {
+		case 't': s = S_E; break;
+		case 'f': s = S_E; break;
+		case '!': s = S_S; break;
+		case '(': s = S_S; break;
+		default: err(&quot;Unexpected&quot;);
+		} break;
+
+	case S_E: switch (c) {
+		case '&amp;': s = S_S; break;
+		case '|': s = S_S; break;
+		case ')': s = S_E; break;
+		default: err(&quot;Unexpected&quot;);
+		} break;
+	}
+
+	return s == E;
+}
+</code></pre>
+<p>The nice thing is parsing is never ambiguous, that is, it's always clear given the current state and input what the next state should be.
+The table above doesn't <em>actually</em> represent an acceptor for our grammar though.
+It recognizes &quot;t &amp; f&quot; sure, but it recognizes too much.
+For instance, it thinks &quot;))))&quot; is a valid input.</p>
+<p>Since our grammar includes nesting parentheses, we'll need to keep track of that.
+Could just introduce a counter, that increases for '(' and decreases for ')'.
+Check that it never goes negative, and that we're back at 0 at the end, and we should be good.</p>
+<pre><code>int pars = 0;
+...
+	case '(': ... ; pars++; break;
+...
+	case ')': ... ; if (pars == 0) err(&quot;Unexpected&quot;); pars--; break;
+...
+if (pars != 0) err(&quot;Expected more&quot;);
+return s == S_E;
+</code></pre>
+<p>Cool, that oughta work as an acceptor.</p>
+<p>What happens if we want to actually evaluate it though?</p>
+<h2>Evaluating</h2>
+<p>To think like a human for a second: for expressions like &quot;t &amp; f | t&quot; we can read it from left to right, and chunk it up like</p>
+<pre><code>t &amp; f ...
+||||| ^^^ forget about what was there for now
+^^^^^ we can just evaluate this leftmost &quot;t &amp; f&quot; which is f
+
+    f ...
+    f | t  which is &quot;t&quot;
+    ^ replace the leftmost expression with its value, in this case f
+
+t &amp; f | t is &quot;t&quot;
+</code></pre>
+<p>We didn't really need to peek-ahead or remember much more than &quot;what is the left operand&quot; (last computed value t/f) for any given step.
+Fairly simple, and doesn't require much brain space.</p>
+<p>To think like a <em>computer</em>: we got to be a little more precise.
+If we're going character by character, we only need to remember 2 things:</p>
+<pre><code>    t ... we've got 't'
+  t &amp; ... an operator, so we've got 't &amp;' and expecting t/f next?
+t &amp; f ... replace it with the value of &quot;t &amp; f&quot; which is &quot;f&quot;
+    f ...
+  f | ... there better be t or f next
+f | t     there is, replace it with value of &quot;f | t&quot; which is &quot;t&quot;
+</code></pre>
+<p>so we have to remember the left operand and the operator if we're stepping character by character.</p>
+<p>You may notice my example doesn't use the not '!' or parentheses '(',')'.
+Let's restrict the grammar for a minute and just consider:</p>
+<pre><code>expr ::= 't' | 'f' | expr '&amp;' expr | expr '|' expr
+</code></pre>
+<p>Which is pretty easy to parse and evaluate the expressions</p>
+<pre><code>typedef enum Op { And, Or } Op;
+
+bool
+eval(bool l, Op op, bool r) {
+	switch (op) {
+	case And: return l &amp;&amp; r;
+	case Or: return l || r;
+	}
+}
+
+typedef enum State { S_S, S_E } State;
+
+int
+parse(bool* b) {
+	bool l;
+	Op op;
+	int c;
+	State s = S_S;
+
+	while ((c=getchar(stdin)) != EOF &amp;&amp; c != '\n')
+	switch (s) {
+	case S_S: switch (c) {
+		case 't': *b = eval(l, op, true); s = S_E; break;
+		case 'f': *b = eval(l, op, false); s = S_E; break;
+		default: err(&quot;Unexpected&quot;);
+		} break;
+	case S_E: switch (c) {
+		case '&amp;': l = *b; op = And; s = S_S; break;
+		case '|': l = *b; op = Or; s = S_S; break;
+		default: err(&quot;Unexpected&quot;);
+		} break;
+	}
+
+	return s == S_E;
+}
+</code></pre>
+<p>but how should we handle not and paren nesting?
+We could handle not like we handle and/or, just there's no first argument to remember.</p>
+<pre><code>enum Op { Not, And, Or };
+...
+eval(bool l, Op op, bool r) {
+...
+	case '!': return !r;
+...
+parse(bool *b) {
+...
+		case '|': ...
+		case '!': op = Not; s = S_S; break;
+</code></pre>
+<p>Now parens are tricky, consider &quot;t | (t &amp; f)&quot;
+Can't just use a paren counter, because</p>
+<pre><code>t | ...
+^^^ okay, store Or(t) for next value
+    ( ... )
+      ^^^ but next value is everything in here
+</code></pre>
+<p>uh, what if we just par++ and keep going?</p>
+<pre><code>t | t ... ez
+    t ...
+  t &amp; ...
+t &amp; f ...
+  f )     uh, par-- looks good
+    f     we're done, but that's not right
+</code></pre>
+<p>if we don't evaluate the right-hand operand separately, then we're just ignoring the parens for evaluating, and can end up with a wrong answer.
+Effectively what we did was transform &quot;t | (t &amp; f)&quot; to &quot;(t | t) &amp; f&quot; which isn't valid.</p>
+<p>So, what to do?
+We can't just add some more memory</p>
+<pre><code>...
+	bool l, l2;
+	Op op, op2;
+...
+</code></pre>
+<p>because then we can only remember 2 operations back, but what if it's &quot;t | (t | (t &amp; f))&quot;?</p>
+<h2>Push Down Automata</h2>
+<p>This is looking like we'll need to support some arbitrary depth of memory.
+People, and computers can't do <em>arbitrary</em> memory, but we can write programs in a way that says: keep remembering until you physically cannot anymore.
+For me that limit is like 3 things, but computers usually have a little more depth.</p>
+<p>We're going to ask it to just keep remembering the list of operators before until it can finally evaluate them.
+This combination of &quot;left operatorand and operator&quot; is &quot;pushed down&quot; onto a stack of others that may have been added before it.</p>
+<p>Aside: this concept is some of that old gold of algorithms/computing referred to as a &quot;stack&quot; a &quot;list&quot; a &quot;Last-In-First-Out (LIFO) queue&quot; and even in some old papers a &quot;cellar&quot;.</p>
+<p>Anyway, we're going to implement a stack of ops using a list.
+A stack is more descriptive of what you can do with it (push/pop) and list is how the data looks (head + tail).
+The stack behaviour is where the &quot;Push Down&quot; comes from for &quot;Push Down Automata&quot;.</p>
+<pre><code>typedef enum Op { Not, And, Or } Op;
+typedef struct OpList {
+	Op op;
+	bool l;
+	OpList* next;
+} OpList;
+
+OpList*
+push(OpList* os, Op op, bool l) {
+	OpList* r = malloc(sizeof(OpList));
+	*r = (OpList){ .op=op, .next=os };
+	return r;
+}
+
+OpList
+pop(OpList* os) {
+	OpList r = *os;
+	free(os);
+	return r;
+}
+
+bool
+eval(bool l, Op op, bool r) {
+	switch (op) {
+	case Not: return !r;
+	case Or: return l || r;
+	case And: return l &amp;&amp; r;
+	} 
+}
+</code></pre>
+<p>that looks good, let's write the parse function</p>
+<pre><code>typedef enum State { S_S, S_E } State;
+
+int
+parse(bool* b) {
+	int c;
+	State s = S_S;
+	OpList* os = NULL;
+
+	while ((c=getchar(stdin)) != EOF &amp;&amp; c != '\n')
+	switch (s) {
+	case S_S: switch (c) {
+		case 't': *b = eval(os-&gt;l, os-&gt;op, true); s = S_E; break;
+		                    ^^^^^ I don't feel too good about this, we initialized it to NULL, so this is just going to throw an error
+</code></pre>
+<p>maybe we can make sure it's not NULL by pushing a value on there to begin with?</p>
+<pre><code>	OpList* os = push(NULL, _, _)
+	                        ^ but what Op should it be?
+</code></pre>
+<p>anything we start it out with translates expr to</p>
+<pre><code>! expr -- if we push Not
+_ &amp; expr -- if we push And and some bool
+_ | expr -- if we push Or and some bool
+</code></pre>
+<p>I think we should just add some other Op variant that's like &quot;do nothing&quot;.
+Evaluating it on the line</p>
+<pre><code>		case 't': *b = eval(os-&gt;l, os-&gt;op, true); s = S_E; break;
+</code></pre>
+<p>should result in *b = true, so I think we have enough to fill it in.</p>
+<pre><code>typedef enum Op { Nop, Not, And, Or };
+...
+eval(...) {
+...
+	case Nop: return r;
+...
+
+
+int
+parse(bool* b) {
+	int c;
+	State s = S_S;
+	OpList* os = push(NULL, Nop, *b);
+
+	while ((c=getchar(stdin)) != EOF &amp;&amp; c != '\n')
+	switch (s) {
+	case S_S: switch (c) {
+		case 't': *b = eval(os-&gt;l, os-&gt;op, true); s = S_E; break;
+		case 'f': *b = eval(os-&gt;l, os-&gt;op, false); s = S_E; break;
+		case '!': os = push(os, Not, *b); break;
+		case '(': os = push(os, Nop, *b); break;
+		default: err(&quot;Unexpected&quot;);
+		} break;
+
+	case S_E: switch (c) {
+		case '&amp;': os = push(os, And, *b); s = S_E; break;
+		case '|': os = push(os, Or, *b); s = S_E; break;
+		case ')': ;
+			if (!os-&gt;next) err(&quot;Unexpected&quot;);
+			OpList ol = pop(os);
+			os = ol.next;
+
+			if (ol.op != Nop) err(&quot;Unexpected&quot;);
+			*b = eval(os-&gt;l, os-&gt;op, ol.l);
+			break;
+		} break;
+	}
+
+	if (os &amp;&amp; os-&gt;next) err(&quot;Expected more&quot;);
+
+	pop(os);
+
+	return s == S_E;
+}
+</code></pre>
+<p>The case ')' line is maybe not really an obvious translation from the previous</p>
+<pre><code>if (pars == 0) err(&quot;Unexpected&quot;); pars--;
+</code></pre>
+<p>but in that simpler case, it was checking to make sure it hadn't read more ')' than there were '(' preceding.</p>
+<h2>Conclusion</h2>
+<p>We defined a grammar and wrote a nice little parser in C for it.
+The way I decided to break it up was to build up the parsing understanding first, then build up understanding on how to evaluate the actual expression.</p>
+<p>Next time, I'll write about either yacc parsers, or maybe a recursive descent version.
+I may fill in this post later with some asides and more links to the theory that underpins the decisions or designs of parsers.</p>
+<p>sick</p>
+<p><strong>-JD</strong></p>
+</div>
+</body>
+</html>

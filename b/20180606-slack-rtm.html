@@ -40,10 +40,10 @@ I ended up using just a little more (needed something that spoke &quot;websocket
 <h2>socket up</h2>
 <p>I made a little shell function while I was poking around the REST endpoints, you may find it useful too:</p>
 <pre><code>$ slackc() {
-    method=$1
-    api=$2
-    shift 2
-    curl -X $method -d &quot;Authorization: Bearer $TOKEN&quot; $@ &quot;https://slack.com/api/$api&quot;
+	method=$1
+	api=$2
+	shift 2
+	curl -X $method -d &quot;Authorization: Bearer $TOKEN&quot; $@ &quot;https://slack.com/api/$api&quot;
 }
 </code></pre>
 <p>I chose <a href="https://github.com/danielstjules/wsc">wsc</a> as a websocket client because it was small and easy to install via <code>npm</code>.</p>
@@ -64,8 +64,9 @@ The little shell stuff is there to extract the url via <code>jq</code>, and stri
 <pre><code>&lt; {&quot;type&quot;:&quot;im_open&quot;,&quot;user&quot;:&quot;UXXXXXXXX&quot;,&quot;channel&quot;:&quot;DXXXXXXXX&quot;,&quot;event_ts&quot;:&quot;1527543437.000020&quot;}
 </code></pre>
 <p>That showed me the channel id I needed <code>DXXXXXXXX</code>, and I sent a message to myself:</p>
-<pre><code>&gt; { &quot;id&quot;: 1, &quot;type&quot;: &quot;message&quot;, &quot;channel&quot;: &quot;DXXXXXXXX&quot;, &quot;text&quot;: &quot;testing this websocket&quot; }
-</code></pre>
+<blockquote>
+<p>{ &quot;id&quot;: 1, &quot;type&quot;: &quot;message&quot;, &quot;channel&quot;: &quot;DXXXXXXXX&quot;, &quot;text&quot;: &quot;testing this websocket&quot; }</p>
+</blockquote>
 <p>and it showed up in the webclient!</p>
 <p>sick</p>
 <p><strong>-JD</strong></p>
