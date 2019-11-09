@@ -1,4 +1,10 @@
 
+.PHONY: all
+all:
+	make $$(ls ????????-*.md |sed 's/.md/.html/')
+	./index.sh >index.md
+	make index.html
+
 %.html: %.md
 	./render.sh -s "post.css" <$< >$@
 
