@@ -1,0 +1,109 @@
+
+colour vs light
+	colour is based on perceptors n-dimensions
+	light is based on frequency+amplitude 2-dimensions
+
+	not totally independent, light triggers all perceptors
+	brain is pretty good at filtering and boosting
+
+2D perceptor mapping
+	can map a single frequency of light using 2 perceptors
+	1. yellow := (1.0, 0.2)
+	2. blue   := (0.2, 1.0)
+	3. unk    := (0.6, 0.01)
+
+	i.  |unk, A| > |A, B|    0.6 > 0.2
+	ii. |unk, B| < |unk, A|  0.01 < 0.6
+
+	by i we know know that light is not between A and B
+	ii says light is closer to B than it is to A
+
+	so map it back to colour, say A is "blue" and B is "yellow", on on our regular ROYGBIV
+
+	   B A
+	 ROYGBIV
+	^^^^ light has to be somewhere over here
+
+	since we have actual measurements, we could work with
+	- red := (?, ?)
+	- orange := (?, ?)
+
+	and place it relative to those as well
+
+2D perceptor mapping (additive)
+	instead of a single pure light, we can add two colours together and see what we get
+
+	vvv this doesn't seem right vvv
+	yellow + yellow := (1.0, 0.4)
+	yellow + blue   := (1.0, 1.0)
+
+	so we can either shine a single green light, or a yellow light and a blue light, and the perceptors will have the same perception
+
+	many things in nature emit or reflect many different wavelengths of light
+
+3D perceptor mapping (additive)
+	Humans generally have 3 perceptors
+	1. red   := (1.0, 0.2, 0.1)
+	2. green := (0.2, 1.0, 0.7)
+	3. blue  := (0.1, 0.7, 1.0)
+
+	this is a 3D space, which is even more than light exists in, so our perception of colour is even more dimensions than actually exist
+
+	we use the trick of combining light to give the perception of colour in TV screens
+
+	normal light between red and blue will activate our green perceptor
+	4. unk1 := (0.4, 0.8, 0.5)
+
+magenta is a "fake colour"
+	but we can trick our brain into seeing some other, fully saturated colour, between red and blue using a combination
+	5. 0.5 * red + 0.5 * blue :=  -- should be very red/blue, little green
+
+	so that is a valid colour even if it can't be mapped back to a single wavelength of light, we call it something like magenta
+
+	I've heard magenta called a "fake colour" and it's maybe too harsh.
+	Magenta is a very real colour (for everyone with 3 perceptors), that cannot be produced by a single pure light
+
+	can think of it as a topological problem, where you must travel from one perceptor to the other
+		consider (0,1)x(0,1)x(0,1) with (1,1,1) and (0,0,0) removed
+		pick two points
+			make a path between them
+			remove all interior points of that path
+			repeat that as many times as you can, and that's how many "fake colours" you can get
+
+	the way I chose it, the path (1,0,0),(1,1,0),(0,1,0),(0,1,1),(0,0,1) matches the path from red->blue that one would get using a single pure light
+	since that light would have to move up frequencies, it would have to pass through green on the way
+
+	however, we can remove all those points, and we still have (1,0,1), and the path (1,0,0),(1,0,1),(0,0,1)
+	that is the path "through" magenta, which cannot be created using a single pure light
+
+	now we've removed all points except (1,0,0), (0,0,1) which are not adjacent, so we have 2 paths
+	since we have two paths that don't cross each other, we can travel both these directions and get a kind of cycle, that cycle is often displayed as the "colour wheel"
+
+	The colour wheel is a wheel because we have 3 perceptors
+	if we had 4 perceptors, we'd get into a (0,1)^4 space, which means we'd have 3 paths from any two points (w/o "white"/"black")
+		(1,0,0,0),(1,1,0,0),(1,1,1,0),(0,1,1,0),(0,0,1,0)
+		(1,0,0,0),(1,1,0,0),(0,1,0,0),(0,1,1,0),(0,0,1,0)
+		                    ^^^^^^^^^ is (1,1,1,0) perceived as just *really* (0,1,0,0)?
+
+	Mantis shrimp have 12 perceptors, how many "fake colours" could they perceive?  What would their "colour wheel" be?
+
+
+perception is inf-dimensions
+	shining multiple lights results in a single colour, but it's still physically n lights, they don't merge into a single wavelength light
+	that means every new shined light adds a new dimension in possible perception of colour
+	tempted to say colour blind people and dogs have a "truer" sense of light, but they have a "truer" sense of a single light
+	for our physical world, we generally have more than a single light hitting our eyes, so 3 perceptors can tell more about 2> sources of light than 2 perceptors can
+		what is it that 3 perceptors can tell that 2 don't?
+	why do we see a continuum instead of perceiving 3 discrete values for everything?
+	similar to our brain mapping binocular vision to a single continuous view of 3D space, but we cheat that with illusions of depth
+
+	maybe most colours are "illusions", our brain thinks the light hitting us is pure, but really most light is combinations of multiple lights
+
+link
+	very similar, doesn't take much of the math bent, but visuals https://lodev.org/cgtutor/color.html
+	CIE vs RGB http://www.fourmilab.ch/documents/specrend/
+	CIE history, some info on cones https://en.wikipedia.org/wiki/CIE_1931_color_space
+	"metamers": nonmatching spectral power distribution https://en.wikipedia.org/wiki/Metamerism_(color)
+	"scotopic": low-light vision, also low-frequency (498nm) https://en.wikipedia.org/wiki/Scotopic_vision
+	"tapetum lucidum": reflective bit in some vertabrate eyes for better darksight https://en.wikipedia.org/wiki/Tapetum_lucidum
+	"tetrachromacy": some women have 4 receptors https://en.wikipedia.org/wiki/Tetrachromacy#Humans
