@@ -1,6 +1,7 @@
+* { box-sizing: border-box; }
 html, body {
-	background: #222222;
-	color: #dddddd;
+	background: #222;
+	color: #ddd;
 	font-family: monospace;
 	font-size: 16px;
 	margin: 0;
@@ -11,7 +12,7 @@ body div {
 	margin: auto;
 	margin-top: 5%;
 	margin-bottom: 5%;
-	border: 1px solid #888;
+	border: 1px solid #999;
 	padding: 1em;
 }
 body div h1 {
@@ -34,6 +35,8 @@ ul li::before { content: "» "; }
 pre {
 	overflow: auto;
 	background: #444;
+	-moz-tab-size: 3;
+	tab-size: 3;
 }
 div > pre {
 	margin-left: -1em;
@@ -45,11 +48,27 @@ div > pre {
 	padding-left: 1em; 
 	padding-right: 1em;
 }
-code { background: #444444; padding: 0.1em; }
+code {
+	background: #444;
+	padding: 0.1em;
+	border-radius: 0.2em;
+	font-size: 12px;
+}
+pre > code {
+	background: inherit;
+	padding: 0;
+}
+blockquote {
+	margin: 0;
+	padding-left: 0.8em;
+	border-left: 0.2em solid;
+}
 div header { 
 	float: right;
-	color: #888;
+	color: #999;
 }
+
+pmeta { display: none }
 
 @media only screen and (max-width: 800px) {
 	body div {
@@ -60,7 +79,7 @@ div header {
 	div > pre {
 		margin-left: -2em;
 		margin-right: -2em;
-		padding-left: 2em;
-		padding-right: 2em;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 }
