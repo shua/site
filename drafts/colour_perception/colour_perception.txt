@@ -107,3 +107,5 @@ link
 	"scotopic": low-light vision, also low-frequency (498nm) https://en.wikipedia.org/wiki/Scotopic_vision
 	"tapetum lucidum": reflective bit in some vertabrate eyes for better darksight https://en.wikipedia.org/wiki/Tapetum_lucidum
 	"tetrachromacy": some women have 4 receptors https://en.wikipedia.org/wiki/Tetrachromacy#Humans
+
+	https://www.cs.mcgill.ca/~rwest/wikispeedia/wpcd/wp/c/Color.htm
