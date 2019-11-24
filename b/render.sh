@@ -25,6 +25,7 @@ cat <<HEADER
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 HEADER
 
 while [ $# -gt 0 ]; do
@@ -50,7 +51,7 @@ cat <<HEADER
 HEADER
 
 [ -n "$created" ] && echo "<header>$created</header>"
-[ -n "$title" ] && echo "<h1>&gt; $title</h1>"
+[ -n "$title" ] && echo "<h1>&gt;&nbsp;$title</h1>"
 
 (echo "$line"; cat) |pulldown-cmark
 
