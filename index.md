@@ -1,13 +1,3 @@
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" type="text/css" href="menu.css" />
-</head>
-
-<body>
-
-<div>
 <h1>Hello There</h1>
 <p>
 I go by many names, 
@@ -38,6 +28,3 @@ You can contact me at:
 	<li><a rel="me" href="https://ruhr.social/@shua">mastodon://shua</a></li>
 	</ul>
 </p>
-</div>
-</body>
-</html>

@@ -1,23 +1,24 @@
 html, body {
 	background: #222222;
 	color: #dddddd;
-	font-family: monospace;
+	font-family: Nunito, mono;
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
 }
-body div {
+body > div {
 	max-width: 400px;
 	margin: auto;
 	margin-top: 10%;
 	border: 1px solid;
 	padding: 1em;
 }
-body div h1 {
+body > div > h1 {
 	padding: 0;
 	margin: 0;
 	margin-bottom: .5em;
 }
+h1 { font-weight: 600; }
 a {
 	text-decoration: none;
 	color: inherit;
