@@ -8,14 +8,19 @@
 </head>
 <body>
 <div>
-<header>2019 November 9</header>
-<h1>&gt;&nbsp;Parsing 1: PDA</h1>
+<header>
+<created>2019 November 9
+<br/><i>updated: 2019 November 29</i>
+</created>
+<ptitle><h1>&gt;&nbsp;Parsing 1: PDA</h1></ptitle>
+</header>
 <p>I go back and forth reading/doing and now I'm trying to add teaching to the loop.
 While I can't say if this will be usable by anyone but myself, it's some really informal blog posting on my thoughts for making a parser.</p>
 <p>I like coding in C, because it makes me think about Data+Algorithms, and that's a different mindset than when I'm thinking in Type Theory.
 So I tried giving some of this as an informal talk to some coworkers a couple weeks back.
 It was nominally an introduction to yacc, but I think this will be a series of blog posts describing me trying to get some hands on understanding of different ways to build a parser.</p>
-<p>This first post is both very hand-wavy and very nitty-gritty, so buckle up.</p>
+<p>This first post is both very hand-wavy and very nitty-gritty, so buckle up.
+I'll be referencing C code throughout the post, but you can find the full file <a href="1109-parser1_PDA/parser.c">parser.c</a>.</p>
 <h2>The Language</h2>
 <p>First, let's look at a langauge that has some really simple stuff I want to be able to parse.</p>
 <pre><code>(t|f)&amp;t
@@ -167,7 +172,7 @@ We could handle not like we handle and/or, just there's no first argument to rem
 ...
 eval(bool l, Op op, bool r) {
 ...
-	case '!': return !r;
+	case Not: return !r;
 ...
 parse(bool *b) {
 ...
@@ -259,7 +264,7 @@ parse(bool* b) {
 	                        ^ but what Op should it be?
 </code></pre>
 <p>anything we start it out with translates expr to</p>
-<pre><code>! expr -- if we push Not
+<pre><code>! expr   -- if we push Not
 _ &amp; expr -- if we push And and some bool
 _ | expr -- if we push Or and some bool
 </code></pre>
@@ -317,6 +322,38 @@ parse(bool* b) {
 <pre><code>if (pars == 0) err(&quot;Unexpected&quot;); pars--;
 </code></pre>
 <p>but in that simpler case, it was checking to make sure it hadn't read more ')' than there were '(' preceding.</p>
+<h2>Correction</h2>
+<p>The code presented won't actually run correctly, and this is because we <em>still</em> haven't handled parens and nesting correctly.
+Once an op like <code>Not</code>, <code>And</code>, or <code>Or</code> is evaluated, that op should be popped from the top of the stack.
+We could change the <code>case 't'</code> line to read something like</p>
+<pre><code>case 't': *b = eval(os-&gt;l, os-&gt;op, true); os = os-&gt;op != Nop ? pop(os).next : os; ...
+</code></pre>
+<p>but I think instead our understanding of the effects of evaluation were incomplete.</p>
+<p>I had only mentioned how <code>b</code> changes under evaluation, but it looks like the value of <code>os</code> also changes depending on the op being evaluated.
+Thus, let's change <code>eval</code> to reflect this</p>
+<pre><code>OpList*
+eval(OpList* os, bool* b) {
+	switch(os-&gt;op) {
+	case Nop: break;
+	case Not: *b = !*b; os = pop(os).next; return os;
+	case And: *b = os-&gt;l &amp;&amp; *b; os = pop(os).next; return os;
+	case Or: *b = os-&gt;l &amp;&amp; *b; os = pop(os).next; return os;
+	}
+}
+</code></pre>
+<p>and its usage</p>
+<pre><code>case 't': *b = true; os = eval(os, b); s = S_E; break;
+case 'f': *b = false; os = eval(os, b); s = S_E; break;
+...
+case ')':
+	if (!os-&gt;next || os-&gt;op != Nop) err(&quot;Unexpected&quot;);
+	os = pop(os).next;
+	os = eval(os, b);
+	break;
+</code></pre>
+<p>The final program with all these changes (as well as some debugging additions) is available as <a href="1109-parser1_PDA/parser.c">parser.c</a>.</p>
+<p>As an addendum, and because I enjoy words, what we've made here can be considered a <em>stack machine</em>, specifically a <em>pushdown machine</em> (because it does not permit arbitrary depth operations in the stack, it really just works with the head).
+However, it also has a single boolean register (<code>b</code>), and so could be considered an <em>accumulator</em> which is a name used for machines with a single register.</p>
 <h2>Conclusion</h2>
 <p>We defined a grammar and wrote a nice little parser in C for it.
 The way I decided to break it up was to build up the parsing understanding first, then build up understanding on how to evaluate the actual expression.</p>

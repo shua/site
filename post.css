@@ -20,6 +20,7 @@ body > div > h1 {
 	margin: 0;
 	margin-bottom: .5em;
 }
+
 p {
 	text-align: justify;
 	text-justify: inter-character;
@@ -67,17 +68,26 @@ blockquote {
 	margin: 0;
 	padding-left: 0.8em;
 	border-left: 0.2em solid;
+	font-style: italic;
 }
-div header { 
-	float: right;
-	color: #999;
+blockquote em { font-style: normal; }
+blockquote code { font-style: normal; }
+header { 
+	display: flex;
+	flex-flow: row-reverse wrap;
+	justify-content: space-between;
+}
+header > * { flex-grow: 1 }
+created {
+	text-align: right;
+	color: #999
 }
 
 pmeta { display: none }
 
 @media only screen and (max-width: 800px) {
 	html, body { font-size: 14px; }
-	body div {
+	body > div {
 		margin: 1em;
 		border: 0;
 	}
