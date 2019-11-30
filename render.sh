@@ -15,6 +15,7 @@ while { if [ -z "$nometa" ]; then read line; else false; fi; } do
 	case "$line" in
 		'<pmeta id="title">'*) title=$(meta "$line") ;;
 		'<pmeta id="created">'*) created=$(meta "$line") ;;
+		'<pmeta id="updated">'*) updated=$(meta "$line") ;;
 		"<pmeta"*) echo ">> some other pmeta: $(meta "$line")" >&2 ;;
 		*) nometa=1;;
 	esac
@@ -51,8 +52,14 @@ cat <<HEADER
 <div>
 HEADER
 
-[ -n "$created" ] && echo "<header>$created</header>"
-[ -n "$title" ] && echo "<h1>&gt;&nbsp;$title</h1>"
+echo "<header>"
+if [ -n "$created" ]; then
+	echo "<created>$created"
+	[ -n "$updated" ] && echo "<br/><i>updated: $updated</i>"
+	echo "</created>"
+fi
+[ -n "$title" ] && echo "<ptitle><h1>&gt;&nbsp;$title</h1></ptitle>"
+echo "</header>"
 
 (echo "$line"; cat) |pulldown-cmark
 

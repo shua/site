@@ -1,4 +1,5 @@
 <pmeta id="created">2019 November 9</pmeta>
+<pmeta id="updated">2019 November 29</pmeta>
 <pmeta id="title">Parsing 1: PDA</pmeta>
 
 I go back and forth reading/doing and now I'm trying to add teaching to the loop.
@@ -9,6 +10,7 @@ So I tried giving some of this as an informal talk to some coworkers a couple we
 It was nominally an introduction to yacc, but I think this will be a series of blog posts describing me trying to get some hands on understanding of different ways to build a parser.
 
 This first post is both very hand-wavy and very nitty-gritty, so buckle up.
+I'll be referencing C code throughout the post, but you can find the full file [parser.c].
 
 The Language
 ---
@@ -187,7 +189,7 @@ We could handle not like we handle and/or, just there's no first argument to rem
 	...
 	eval(bool l, Op op, bool r) {
 	...
-		case '!': return !r;
+		case Not: return !r;
 	...
 	parse(bool *b) {
 	...
@@ -294,7 +296,7 @@ maybe we can make sure it's not NULL by pushing a value on there to begin with?
 
 anything we start it out with translates expr to
 
-	! expr -- if we push Not
+	! expr   -- if we push Not
 	_ & expr -- if we push And and some bool
 	_ | expr -- if we push Or and some bool
 
@@ -356,6 +358,46 @@ The case ')' line is maybe not really an obvious translation from the previous
 
 but in that simpler case, it was checking to make sure it hadn't read more ')' than there were '(' preceding.
 
+Correction
+---
+
+The code presented won't actually run correctly, and this is because we _still_ haven't handled parens and nesting correctly.
+Once an op like `Not`, `And`, or `Or` is evaluated, that op should be popped from the top of the stack.
+We could change the `case 't'` line to read something like
+
+	case 't': *b = eval(os->l, os->op, true); os = os->op != Nop ? pop(os).next : os; ...
+
+but I think instead our understanding of the effects of evaluation were incomplete.
+
+I had only mentioned how `b` changes under evaluation, but it looks like the value of `os` also changes depending on the op being evaluated.
+Thus, let's change `eval` to reflect this
+
+	OpList*
+	eval(OpList* os, bool* b) {
+		switch(os->op) {
+		case Nop: break;
+		case Not: *b = !*b; os = pop(os).next; return os;
+		case And: *b = os->l && *b; os = pop(os).next; return os;
+		case Or: *b = os->l && *b; os = pop(os).next; return os;
+		}
+	}
+
+and its usage
+
+	case 't': *b = true; os = eval(os, b); s = S_E; break;
+	case 'f': *b = false; os = eval(os, b); s = S_E; break;
+	...
+	case ')':
+		if (!os->next || os->op != Nop) err("Unexpected");
+		os = pop(os).next;
+		os = eval(os, b);
+		break;
+
+The final program with all these changes (as well as some debugging additions) is available as [parser.c].
+
+As an addendum, and because I enjoy words, what we've made here can be considered a _stack machine_, specifically a _pushdown machine_ (because it does not permit arbitrary depth operations in the stack, it really just works with the head).
+However, it also has a single boolean register (`b`), and so could be considered an _accumulator_ which is a name used for machines with a single register.
+
 Conclusion
 ----------
 
@@ -368,4 +410,6 @@ I may fill in this post later with some asides and more links to the theory that
 sick
 
 **-JD**
+
+[parser.c]: 1109-parser1_PDA/parser.c
 
