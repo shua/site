@@ -20,7 +20,10 @@ body > div > h1 {
 	margin: 0;
 	margin-bottom: .5em;
 }
-p { text-align: justify; }
+p {
+	text-align: justify;
+	text-justify: inter-character;
+}
 h1 { font-weight: 600; }
 a {
 	text-decoration: none;
@@ -73,6 +76,7 @@ div header {
 pmeta { display: none }
 
 @media only screen and (max-width: 800px) {
+	html, body { font-size: 14px; }
 	body div {
 		margin: 1em;
 		border: 0;

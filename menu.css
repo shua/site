@@ -30,6 +30,7 @@ ul { list-style-type: none; }
 li { margin: .3em; }
 li::before { content: "» "; }
 @media only screen and (max-width: 400px) {
+	html, body { font-size: 14px; }
 	body div {
 		margin: 1em;
 		padding: 0;
