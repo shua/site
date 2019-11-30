@@ -19,7 +19,7 @@ Some blog posts
 
 HEADER
 
-for post in $(ls -r ????????-*.md); do
+while read post; do
 	echo "- [$(title "$post")]($(html $post))"
 done
 

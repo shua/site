@@ -1,15 +1,17 @@
 CSS="/menu.css"
+POSTS={2019,2018}/*.md
+
 
 .PHONY: all
-all: index.html 404.html b/index.html
+all: index.html 404.html posts.html
 
 %.html: %.md
 	./render.sh -s $(CSS) <$< >$@
 
-b/index.html: b/????????-*.md
-	make -e CSS="/post.css" $$(ls b/????????-*.md |sed 's/.md/.html/')
-	{ cd b; ./index.sh; } |./render.sh -s "/menu.css" >$@
+posts.html: 2018/*.md 2019/*.md
+	make -e CSS="/post.css" $$(ls $(POSTS) |sed 's/.md/.html/')
+	ls $(POSTS) |sort -r |./posts.sh |./render.sh -s "/menu.css" >$@
 
 .PHONY: clean
 clean:
-	rm -f *.html b/*.html
+	rm -f *.html {2018,2019}/*.html
