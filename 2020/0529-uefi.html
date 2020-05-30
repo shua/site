@@ -1,0 +1,197 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="/f/Nunito.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/post.css" >
+<title>Code-vid: UEFI</title>
+</head>
+<body>
+<div>
+<header>
+<created>2020 May 26
+</created>
+<ptitle><h1>&gt;&nbsp;Code-vid: UEFI</h1></ptitle>
+</header>
+<p>I spent some time over this quarantime brushing up on a couple things,
+but it all started with an interest in <a href="https://uefi.org/specsandtesttools">UEFI</a>.</p>
+<p>UEFI fills a lot of niches that a system's BIOS once filled,
+and provides a programming environment that is somewhere between firmware
+and an operating system.
+I've been told it does quite a bit more than BIOS once did,
+and while I've always had an interest in programming in a BIOS environment,
+I've never really gotten off the ground with any of my putterings,
+so as a result of my inexpertise, I also cannot tell you what the difference
+between UEFI and BIOS is, only that UEFI is newer.</p>
+<p>Most of my experience programming has been with an application that is intended to be run in an OS.
+Whether it's an executable on your computer desktop or an app on your phone,
+I was always able to assume that certain functions and structures were available to me,
+albeit in different flavours for eg linux, windows, mac, android, etc.
+One example of this is a filesystem, so operations like opening or reading a file
+are all calls into the operating system.</p>
+<p>When programming for this early boot environment on a PC, I am presented with
+a different, more limited toolset, and that's one of the main things that interests me.</p>
+<p>I started this project with the intent of writing a bootloader, and using that
+to bootstrap into more OS development stuff, but I got <em>really</em> sidetracked
+and right now I am firmly stuck in UEFI land until I finish this.</p>
+<h2>Pre-Init</h2>
+<p>There was an initial (maybe self-inflicted) headache of trying to assemble with <a href="https://yasm.tortall.net/"><code>yasm</code></a>
+and link with llvm tools, instead of fasm+gcc or just gcc, which seems to be a common option.</p>
+<p>After pouring over the UEFI executable format documentation, I found it was a <a href="https://docs.microsoft.com/en-us/windows/win32/debug/pe-format">Portable Executable (PE)</a>
+format, which is commonly used in the windows world, so looking through some llvm-ld
+documentation and a bunch of trial-and-error I found a magic incantation that worked for me:</p>
+<pre><code># replace &lt;entry&gt;, &lt;file.o&gt;, and &lt;file.efi&gt; with something that makes sense for you
+lld-link /debug /entry:&lt;entry&gt; /subsystem:efi_application &lt;file.o&gt; /out:&lt;file.efi&gt;
+</code></pre>
+<p><code>lld-link</code> is the windows-base linker frontend for the llvm linker,
+which explains the windows-style cli flags even on linux.
+For the rest of the post, I'm going to assume <code>&lt;entry&gt;</code> is <code>efi_main</code>, but you can
+choose whichever one you want.</p>
+<blockquote>
+<p>Note: I tried a bit with a custom linker script before this, and I honestly can't remember if I got it working or not, but this ended up being much cleaner</p>
+</blockquote>
+<p>For <code>yasm</code> it was a little easier, just</p>
+<pre><code>yasm -g dwarf2 -f win64 &lt;file.s&gt; &lt;file.o&gt;
+</code></pre>
+<p>And lastly, in order to run the executable, I needed a UEFI environment with the
+executables I built.
+The natural choice is <a href="https://www.qemu.org/"><code>qemu</code></a> running <a href="https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface#OVMF_for_virtual_machines"><code>OVMF</code></a> boot images, and every time I built
+the efi executables, I'd copy them into a disk image that was attached to the
+qemu system when it booted up.</p>
+<p>There's a good start on the <a href="https://wiki.osdev.org/UEFI#Creating_disk_images">OSDev wiki page for UEFI</a> that I based the following
+commands and stuff off of.</p>
+<pre><code># make the image
+dd if=/dev/zero of=uefi.img bs=512 count=93750 status=none
+# partition it
+# 1. create a gpt table
+# 2. new partition, start 2048, end 93716
+# 3. write to disk
+printf 'g\nn\n1\n2048\n93716\nw\n' |fdisk uefi.img |sed 's/^/fdisk: /'
+</code></pre>
+<p>mounting the image as a loop device, and formatting it need to be done as root</p>
+<pre><code>off=1048576
+siz=46934528
+mnt=$(mktemp -d)
+
+losetup --offset $off --sizelimit $siz /dev/loop0 uefi.img
+mkfs.fat -F 32 /dev/loop0
+mount /dev/loop0 $mnt
+cp -R ./*.efi $mnt/
+umount $mnt
+losetup -d /dev/loop0
+rm -rf $mnt
+</code></pre>
+<p>Those numbers for the size of the image, the formatting, and the offset and size
+params to <code>losetup</code> were gleaned from other guides and docs on UEFI images.</p>
+<p>I wrapped all these commands in a <code>Makefile</code> and a build script.</p>
+<h2>Init</h2>
+<p>The first step is an obligatory hello world, and now with all that other stuff
+out of the way, that too is where I go.</p>
+<p>I found a couple documents really useful for programming for UEFI in assembly:</p>
+<ul>
+<li><a href="https://uefi.org/specifications">UEFI documentation</a> - for info on the entry point, and datastructures available</li>
+<li><a href="https://www.amd.com/system/files/TechDocs/40332.pdf">ISA documentation for x86_64</a> - for info on asm codes</li>
+<li><a href="http://www.tortall.net/projects/yasm/manual/html/manual.html">YASM documentation</a> - for info on yasm format, as well as preprocessor macros</li>
+</ul>
+<p>With all that in mind, we start with the symbol I've declared as the entrypoint
+in my <code>lld-link</code> command: <code>efi_main</code></p>
+<pre><code>; hello.s
+section .text
+global efi_main
+efi_main:
+	; something something
+	; print &quot;hello world&quot;
+	; exit?
+</code></pre>
+<p>The UEFI documentation describes calling conventions as well as the UEFI entry point.</p>
+<ul>
+<li>the first two arguments to a function are available as <code>rcx</code> and <code>rdx</code> (if they fit)</li>
+<li>the entrypoint should accept two arguments: <code>ImageHandle</code>, <code>SystemTable</code></li>
+</ul>
+<p>So, we have no use for the image handle right now, what we really want is the
+system table, specifically the <code>ConOut</code> pointer, and its associated <code>OutputString</code> function.</p>
+<pre><code>; these data structs are taken from UEFI docs
+struc EFI_SYSTEM_TABLE
+resq 8 ; buncha fields we don't care about right now
+.ConOut: resq 1
+resq 6
+endstruc
+struc EFI_SIMLE_TEXT_OUTPUT_PROTOCOL
+resq 1
+.OutputString: resq 1
+resq 8
+endstruc
+
+section .text
+global efi_main
+efi_main:
+	; rcx = ImageHandle, rdx = SystemTable
+	; rcx, rdx, rax are all volatile, which means we don't have to save them
+	; OutputString takes rcx = ConOut, rdx = &lt;string&gt;
+	mov rcx, [rdx+EFI_SYSTEM_TABLE.ConOut]
+	mov rax, [rcx+EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL.OutputString]
+	lea rdx, [rel _hello]
+	call rax
+	ret
+
+section.data
+; UEFI strings are UCS or utf16be encoded
+; for ascii chars, this is equivalent to the ascii byte left-padded with 0's
+; the 13,10 are cr nl
+hello: dw 'h','e','l','l','o',13,10,0
+</code></pre>
+<p>Lastly, we need to actually run the image we made, so my qemu command is</p>
+<pre><code>qemu-system-x86_64 -cpu qemu64 -net none -bios OVMF.fd -drive format=raw,file=uefi.img
+</code></pre>
+<p>Google around for how to get the <code>OVMF.fd</code> bios file.
+For me it is provided as a package, but there should also be a direct download somewhere,
+I don't feel like finding it for you.</p>
+<h2>Debugging (or lack therof)</h2>
+<p>I could not get <code>gdb</code> or <code>lldb</code> to attach to qemu and do anything intelligible,
+so for the time being, line-debugging is out.
+Also, before I had gotten <code>OutputString</code> working, I couldn't debug with log
+messages either.
+Luckily, and I'm not sure if it's just a function of qemu or the <code>OVMF</code> environment
+or if it's from UEFI, but when there's a fault, I get a nice dump of all the
+registers, so I used that to debug where I was in the program.</p>
+<p>I'd have some <code>mov r8, __LINE__</code> scattered throughout the program,
+and I would stick a <code>call 0</code> to induce a fault.
+I could then check <code>r8</code> to see whether a certain branch had been hit or not.
+That or just add a <code>call 0</code> somewhere to check what's in the different registers at a certain point.</p>
+<pre><code>FS0:\&gt; main.efi
+!!!! X64 Exception Type - 0D(#GP - General Protection)  CPU Apic ID - 00000000 !!!!
+ExceptionData - 0000000000000000
+RIP  - 00000000067E0004, CS  - 0000000000000038, RFLAGS - 0000000000000246
+RAX  - 00000000067E2018, RCX - 06B3D32000000000, RDX - 0000000007BEE018
+RBX  - 0000000007F1C578, RSP - 0000000007F1C498, RBP - 0000000007F1C568
+RSI  - 0000000000000009, RDI - 00000000067E2018
+R8   - 0000000000000004, R9  - 0000000000000108, R10 - 0000000000000000
+R11  - 0000000000000008, R12 - 0000000000000000, R13 - 0000000006B1C018
+R14  - 0000000000000000, R15 - 00000000067E2040
+DS   - 0000000000000030, ES  - 0000000000000030, FS  - 0000000000000030
+GS   - 0000000000000030, SS  - 0000000000000030
+CR0  - 0000000080010033, CR2 - 0000000000000000, CR3 - 0000000007C01000
+CR4  - 0000000000000668, CR8 - 0000000000000000
+DR0  - 0000000000000000, DR1 - 0000000000000000, DR2 - 0000000000000000
+DR3  - 0000000000000000, DR6 - 00000000FFFF0FF0, DR7 - 0000000000000400
+GDTR - 0000000007BEEA98 0000000000000047, LDTR - 0000000000000000
+IDTR - 00000000072D1018 0000000000000FFF,   TR - 0000000000000000
+FXSAVE_STATE - 0000000007F1C0F0
+!!!! Find image based on IP(0x67E0004) (No PDB)  (ImageBase=00000000067DF000, EntryPoint=000000
+00067E0000) !!!!
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that I could compile and run <em>something</em> I started messing around with
+input as well as output, and thought I'd try my hand at making a forth interpreter.
+I'd heard about forth being a common lang to implement in embedded environments
+so this seemed like a good place to try it, but before I did, it was really
+bugging me that I couldn't use string literal syntax and have <code>yasm</code> encode it
+as utf16be.
+I found that <a href="https://www.nasm.us/"><code>nasm</code></a>, which <a href="https://yasm.tortall.net/"><code>yasm</code></a> is mimicing, has string operations like
+<code>__utf16be__(&quot;hello&quot;)</code> which is exactly what I'm looking for,
+but <code>yasm</code> does not have them.</p>
+<p>So I took a detour and <a href="0529-yasm_utf.html">added utf string ops to <code>yasm</code></a>.</p>
+<p><strong>-JD</strong></p>
+</div>
+</body>
+</html>

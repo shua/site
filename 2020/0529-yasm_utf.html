@@ -1,0 +1,197 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="/f/Nunito.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/post.css" >
+<title>Code-vid: yasm utf string ops</title>
+</head>
+<body>
+<div>
+<header>
+<created>2020 May 26
+</created>
+<ptitle><h1>&gt;&nbsp;Code-vid: yasm utf string ops</h1></ptitle>
+</header>
+<p>From the <a href="0529-uefi.html">previous work in UEFI images</a>, I got a new itch: extend <a href="https://yasm.tortall.net/"><code>yasm</code></a> to support
+<a href="https://www.nasm.us/doc/nasmdoc3.html"><code>nasm</code>'s utf string ops</a>.</p>
+<p>For a minimal example, I wanted to write</p>
+<pre><code>; example.s
+dw __utf16be__(&quot;hello&quot;)
+</code></pre>
+<p>and have</p>
+<pre><code>$ yasm example.s  -o example.out
+$ od example.out -x
+0000000 0068 0065 006c 006c 006f
+</code></pre>
+<h2>Digging</h2>
+<p><code>yasm</code> is a C codebase that's currently split into a frontend and a backend.
+The &quot;frontend&quot; encompasses the tokenization and parsing of source code,
+and the &quot;backend&quot; encompasses assembling codes and data into an object file.</p>
+<p>My change would need two things implemented:</p>
+<ul>
+<li>recognizing and parsing the <code>__utf*__</code> ops correctly</li>
+<li>translating the utf8 encoded string in the string op to some other unicode encoding</li>
+</ul>
+<p>the first naturally fits in the &quot;frontend&quot; code, and the second in the &quot;backend&quot;.</p>
+<h2>Parsing</h2>
+<p><code>yasm</code> uses a cool preprocessor called &quot;<a href="https://re2c.org/">re2c</a>&quot; to generate its tokenizer as C source.
+I'd never heard of it before, but the tool reads essentially annotated C source and generates
+some state machine code from the annotations.</p>
+<p>I've used <code>yacc</code> and the like to produce parsers for toy langs before,
+and the theory is very similar, but re2c seems a little closer to a pure C state machine parser.
+I think it's pretty neat, and while many modern languages cry about extensibility,
+it's kind of a self-inflicted problem with programmers who are uncomfortable 
+writing parsers, preprocessors, and code generators.
+Source code is (usually) just text, so every language can be seen as just a
+compile target for a slightly more powerful language.</p>
+<p>Anyway, I'm only interested in extending the nasm parser, so changes go in
+<code>modules/parsers/nasm</code> where I added a new token type of <code>STRING_OP</code> that is
+emitted by any matches on <code>__utf*__</code>  style prefixes.</p>
+<p>Some snippets of adding the encoding data are below:</p>
+<pre><code>// type def libyasm/coretype.h
+typedef enum yasm_utfenc { UTF8 = 0, UTF16LE, UTF32LE, UTF16BE, UTF32BE } yasm_utfenc;
+
+// struct def modules/parsers/nasm/nasm-parser-struct.h
+    struct {
+        char *contents;
+        yasm_utfenc enc; // &lt;- added this
+        size_t len;
+    } str;
+
+// usage modules/parsers/nasm/nasm-token.re 
+    /* string/character constant values */
+    '__utf16__' | '__utf16le__' {
+        lvalp-&gt;str.enc = UTF16LE;
+        RETURN(STRING_OP);
+    }
+    '__utf32__' | '__utf32le__' {
+        lvalp-&gt;str.enc = UTF32LE;
+        RETURN(STRING_OP);
+    }
+    '__utf16be__' {
+        lvalp-&gt;str.enc = UTF16BE;
+        RETURN(STRING_OP);
+    }
+    '__utf32be__' {
+        lvalp-&gt;str.enc = UTF32BE;
+        RETURN(STRING_OP);
+    }
+</code></pre>
+<p>Next I added parsing rules that <code>STRING_OP</code> should be proceeded by <code>'(' STRING ')'</code>.
+When that sequence of tokens is matched, a new data value is created with the
+value of the <code>STRING</code> token which is encoded according to the <code>STRING_OP</code>.
+The actual encoding is done by some &quot;backend&quot; code.</p>
+<pre><code>// modules/parsers/nasm/nasm-parse.c
+    if (curtok == STRING_OP) {
+        yasm_utfenc enc = STRING_val.enc;
+        get_next_token();
+        if (curtok != '(') { ...ERR... }
+    
+        get_next_token();
+        if (curtok != STRING) { ...ERR... }
+    
+        dv = yasm_dv_create_string(STRING_val.contents, STRING_val.len, enc);
+        if (!dv) {
+            yasm_error_set(YASM_ERROR_GENERAL, N_(&quot;error encoding utf&quot;));
+        }
+    
+        get_next_token();
+        if (curtok != ')') { ...ERR... }
+        ...
+</code></pre>
+<h2>Encoding</h2>
+<p>I used <a href="https://www.unicode.org/versions/Unicode13.0.0/ch03.pdf#G7404">unicode's documentation</a> as well the helpful <a href="https://www.w3.org/TR/encoding/">w3m documentation</a>
+on different unicode encoding and decoding schemes.
+I won't recreate the specifics here, but the higher-level was</p>
+<ol>
+<li>if the output is utf8, then just copy input to a dataval object and return that</li>
+<li>set <code>utfenc</code> to the proper (16/32bit) encoding function, and <code>be</code> to true/false depending on if the encoding is big-endian or not</li>
+<li>if there's no more input, then create the dataval from the buffer and return it</li>
+<li>else decode a 32bit codepoint from input</li>
+<li>encode the codepoint using <code>utfenc</code> and <code>be</code> and append to the buffer</li>
+<li>go back to 3</li>
+</ol>
+<p>steps 3-6 are copied in a snippet below:</p>
+<pre><code>// libyasm/bc-data.c
+    unsigned int cpt;
+    int j=0;
+    buf = yasm_xmalloc(bufn);
+    for (int i=0; i&lt;len;) {
+        if (j &gt; bufn)
+            goto encodeerr;
+        int read = next_codepoint(&amp;cpt, raw+i, len-i);
+        if (read &lt;= 0)
+            goto encodeerr;
+        i += read;
+        int wrtn = utfenc(buf+j, cpt, be);
+        if (wrtn &lt;= 0)
+            goto encodeerr;
+        j += wrtn;
+    }
+    bufn = j;
+</code></pre>
+<p>If you want to read the actual implementation it's available currently on <a href="https://github.com/yasm/yasm/pull/147">a PR</a>.</p>
+<h2>Testing</h2>
+<p>I really wanted an automated way to test this things worked as I expected,
+luckily the yasm project has some testing setup I could use.
+I found it a bit tricky to get setup and running, and was basically compiling
+the testing code and running them manually because I couldn't get the whole
+test running scripts to work.</p>
+<pre><code>$ mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make $$ cd ..
+$ cp build/yasm yasm
+$ make test_hd
+clang     test_hd.c   -o test_hd
+$ srcdir=$PWD
+$ libyasm/tests/libyasm_test.sh
+Test libyasm_test: ...........E.......................... +37-1/38 97%
+ ** E: incbin returned an error code!
+$ cat results/incbin.ew
+-:1: error: `incbin': unable to open file `stamp-h1'
+</code></pre>
+<p>I have no idea what generates that <code>stamp-h1</code> file, but all the other tests pass,
+which makes me think I'm pretty much good.</p>
+<p>I decided to add my own test to exercise the code I had added and written.
+I only tested the happy cases of each string op, and I didn't manage to find
+meaningful codepoints to test surrogate pairing in utf16* encodings or longer
+utf8 clusters.
+I have no reason to believe it <em>won't</em> work for higher codepoints,
+but they're currently not tested.</p>
+<p>Similarly, no idea if I added a data leak or not.
+The parser code, and some of the backend code does allocations and frees
+that were throwing me off, and it's unclear to me who owns what data
+that get's passed around, caller or callee.</p>
+<h2>The PR</h2>
+<p>There's <a href="https://github.com/yasm/yasm/pull/147">a PR</a> open to add this feature to yasm and where I've asked some questions
+about testing and data leaks above, but I haven't seen a lot of
+movement on that codebase or the PRs, so I don't have a lot of hope for it.
+While this was a fun dive into a foreign codebase, I wonder if people are
+using some other opensource nasm-like assembler, and that's why development
+on yasm has stagnated.</p>
+<h2>Some Corollary Thoughts</h2>
+<p>It was a nice stretch, and along the way I cemented a couple insights into myself:
+The first is that I really like reading and implementing clear specs.
+I guess the alternative is just hacking something together, and I like that too,
+but there's an enjoyment I get from perusing the encoding/decoding specs in
+unicode that I really miss in hack projects.</p>
+<p>The second is related to the re2c program used in the yasm source and is 
+more a <em>feely</em> thing in that that I am comforted knowing that I can extend 
+any language I want to by writing preprocessors and compilers for more 
+interesting languages on top of it.</p>
+<p>I write a lot of Java in my day job.
+It's been a slog getting Lombok accepted, which is a text preprocessor
+that reduces a lot of repetitive, almost <em>formulaic</em> Java boilerplate.
+I can't imagine trying to pitch custom DSL's or any other preprocessor
+to my team or any other team I know.
+I can think of many ways to implement a DSL on top of other base languages,
+but I like the simplicity of just including a transpiler in your project instead
+of relying on syntactic extension features or text macros.</p>
+<p>Having leaned into Rust a little more, and weirdly doing a lot of prolog
+on the side, I still like C for hacking and testing ideas.
+I really like the more general idea, however burdensome, of extending a 
+minimal base language with DSLs that to do what I want,
+instead of jumping to a higher-level language just to use a couple things I don't understand.</p>
+<p><strong>-JD</strong></p>
+</div>
+</body>
+</html>
