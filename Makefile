@@ -15,3 +15,9 @@ posts.html: 2018/*.md 2019/*.md 2020/*.md
 .PHONY: clean
 clean:
 	rm -f *.html {2018,2019,2020}/*.html
+	rm -rf out
+
+out:
+	mkdir -p out
+	find . -path './20??*' -type d -exec mkdir -p out/{} \;
+	find . \( \( -path './out*' -o -path './draft*' \) -prune -o -name '*.html' \) -type f -exec cp {} out/{} \;
