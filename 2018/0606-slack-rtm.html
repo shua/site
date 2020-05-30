@@ -4,13 +4,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="/f/Nunito.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/post.css" >
+<title>slack-rtm</title>
 </head>
 <body>
 <div>
 <header>
+<created>2018 June 6
+</created>
+<ptitle><h1>&gt;&nbsp;slack-rtm</h1></ptitle>
 </header>
-<header> June 6, 2018</header>
-<h1>&gt; slack-rtm</h1>
 <p>After learning slack had <a href="https://it.slashdot.org/story/18/03/08/2049255/slack-is-shutting-down-its-irc-gateway">removed support</a> for <a href="https://slack.com/account/gateways">irc gateways</a>,
 I wanted to see what their alternative was for an api.
 I knew about some of the web API because I've messed around with <a href="https://hubot.github.com/">hubots</a> for various slack orgs I've been in, but I took a nice dive into the docs with the idea that I wanted to send myself a message via curl.
@@ -68,9 +70,8 @@ The little shell stuff is there to extract the url via <code>jq</code>, and stri
 <pre><code>&lt; {&quot;type&quot;:&quot;im_open&quot;,&quot;user&quot;:&quot;UXXXXXXXX&quot;,&quot;channel&quot;:&quot;DXXXXXXXX&quot;,&quot;event_ts&quot;:&quot;1527543437.000020&quot;}
 </code></pre>
 <p>That showed me the channel id I needed <code>DXXXXXXXX</code>, and I sent a message to myself:</p>
-<blockquote>
-<p>{ &quot;id&quot;: 1, &quot;type&quot;: &quot;message&quot;, &quot;channel&quot;: &quot;DXXXXXXXX&quot;, &quot;text&quot;: &quot;testing this websocket&quot; }</p>
-</blockquote>
+<pre><code>&gt; { &quot;id&quot;: 1, &quot;type&quot;: &quot;message&quot;, &quot;channel&quot;: &quot;DXXXXXXXX&quot;, &quot;text&quot;: &quot;testing this websocket&quot; }
+</code></pre>
 <p>and it showed up in the webclient!</p>
 <p>sick</p>
 <p><strong>-JD</strong></p>
