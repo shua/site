@@ -1,4 +1,4 @@
-<pmeta id="created">2020 January 15</pmeta>
+<pmeta id="created">2020-01-15</pmeta>
 <pmeta id="title">RiiR: Ghosts of Departed Proofs</pmeta>
 
 This is the first in hopefully a series of posts where I try rewriting something in [Rust].
