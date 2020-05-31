@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>is this a blog</title>
+	<subtitle>it is</subtitle>
+	<link href="http://isthisa.blog"/>
+	<updated>2020-05-26</updated>
+	<author>
+		<name>JD Lloret</name>
+		<email>itis@isthisa.email</email>
+	</author>
+	<id>tag:isthisa.website,2018:feed</id>
+	<entry>
+		<title>Code-vid: yasm utf string ops</title>
+		<link href="https://isthisa.website/2020/0529-yasm_utf.html"/>
+		<id>tag:isthisa.website,2018:2020/0529-yasm_utf</id>
+		<updated>2020-05-26</updated>
+		<summary>
+<p>
+From the <a href="0529-uefi.html">previous work in UEFI images</a>, I got a new itch: extend <a href="https://yasm.tortall.net/"><code>yasm</code></a> to support
+<a href="https://www.nasm.us/doc/nasmdoc3.html"><code>nasm</code>'s utf string ops</a>.
+</p>
+		</summary>
+	</entry>
+	<entry>
+		<title>Code-vid: UEFI</title>
+		<link href="https://isthisa.website/2020/0529-uefi.html"/>
+		<id>tag:isthisa.website,2018:2020/0529-uefi</id>
+		<updated>2020-05-26</updated>
+		<summary>
+<p>
+I spent some time over this quarantime brushing up on a couple things,
+but it all started with an interest in <a href="https://uefi.org/specsandtesttools">UEFI</a>.
+</p>
+		</summary>
+	</entry>
+	<entry>
+		<title>RiiR: Ghosts of Departed Proofs</title>
+		<link href="https://isthisa.website/2020/0115-gdp-rs.html"/>
+		<id>tag:isthisa.website,2018:2020/0115-gdp-rs</id>
+		<updated>2020-01-15</updated>
+		<summary>
+<p>
+This is the first in hopefully a series of posts where I try rewriting something in <a href="https://www.rust-lang.org/">Rust</a>.
+</p>
+		</summary>
+	</entry>
+	<entry>
+		<title>Parsing 2: recursive descent</title>
+		<link href="https://isthisa.website/2019/1206-parser_recdesc.html"/>
+		<id>tag:isthisa.website,2018:2019/1206-parser_recdesc</id>
+		<updated>2019-12-06</updated>
+		<summary>
+<p>
+<a href="./1109-parser1_PDA.html">Last time</a>
+I tried to parse our toy logical calculator language using a hand-constructed push-down automata.
+</p>
+		</summary>
+	</entry>
+	<entry>
+		<title>colour and light</title>
+		<link href="https://isthisa.website/2019/1124-colour_and_light.html"/>
+		<id>tag:isthisa.website,2018:2019/1124-colour_and_light</id>
+		<updated>2019-11-24</updated>
+		<summary>
+<p>
+Colour and light are different things.
+Light is the physical properties of photons, while colour is the human perception of light.
+While light can have potentially infinite dimensions of variation, your eyes only have three variables.
+This requires your brain to make some simplifying assumptions about the light it sees.
+</p>
+		</summary>
+	</entry>
+	<entry>
+		<title>Parsing 1: PDA</title>
+		<link href="https://isthisa.website/2019/1109-parser1_PDA.html"/>
+		<id>tag:isthisa.website,2018:2019/1109-parser1_PDA</id>
+		<updated>2019-11-29</updated>
+		<summary>
+<p>
+I go back and forth reading/doing and now I'm trying to add teaching to the loop.
+While I can't say if this will be usable by anyone but myself, it's some really informal blog posting on my thoughts for making a parser.
+</p>
+		</summary>
+	</entry>
+	<entry>
+		<title>slack-rtm</title>
+		<link href="https://isthisa.website/2018/0606-slack-rtm.html"/>
+		<id>tag:isthisa.website,2018:2018/0606-slack-rtm</id>
+		<updated>2018-06-06</updated>
+		<summary>
+<p>
+After learning slack had <a href="https://it.slashdot.org/story/18/03/08/2049255/slack-is-shutting-down-its-irc-gateway">removed support</a> for <a href="https://slack.com/account/gateways">irc gateways</a>,
+I wanted to see what their alternative was for an api.
+I knew about some of the web API because I've messed around with <a href="https://hubot.github.com/">hubots</a> for various slack orgs I've been in, but I took a nice dive into the docs with the idea that I wanted to send myself a message via curl.
+I ended up using just a little more (needed something that spoke &quot;websocket&quot;), and here's my little writeup for what was required.
+</p>
+		</summary>
+	</entry>
+</feed>
