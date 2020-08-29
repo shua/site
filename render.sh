@@ -54,6 +54,7 @@ cat <<LDJSON
 , "@type": "Person"
 , "name": "Joshua Lloret"
 }
+</script>
 LDJSON
 ;;
 post)
