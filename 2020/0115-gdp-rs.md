@@ -258,7 +258,7 @@ but maybe that can be improved (without losing the gdp stuff) by using `dyn` typ
 I've also thought about using rust lifetimes instead of `PhantomData` types but I haven't figured out a way to
 get the compiler to create unique, non-intersecting lifetimes.
 
-**-JD**
+
 
 [Rust]: https://www.rust-lang.org/
 [GDP]: https://kataskeue.com/gdp.pdf

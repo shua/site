@@ -409,7 +409,5 @@ I may fill in this post later with some asides and more links to the theory that
 
 sick
 
-**-JD**
-
 [parser.c]: 1109-parser1_PDA/parser.c
 

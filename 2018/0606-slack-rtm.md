@@ -86,8 +86,6 @@ and it showed up in the webclient!
 
 sick
 
-**-JD**
-
 [removed support]: https://it.slashdot.org/story/18/03/08/2049255/slack-is-shutting-down-its-irc-gateway
 [irc gateways]: https://slack.com/account/gateways
 [hubots]: https://hubot.github.com/

@@ -211,7 +211,7 @@ I really like the more general idea, however burdensome, of extending a
 minimal base language with DSLs that to do what I want,
 instead of jumping to a higher-level language just to use a couple things I don't understand.
 
-**-JD**
+
 
 [previous work in UEFI images]: 0529-uefi.html
 [`yasm`]: https://yasm.tortall.net/

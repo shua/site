@@ -7,6 +7,11 @@ usage() {
 title=""
 created=""
 
+while case "$1" in
+-t) type="$2"; shift 1;;
+*) false;;
+esac; do shift; done
+
 meta() {
 	echo "$1" |sed 's/<[^>]*>//g'
 }
@@ -23,13 +28,14 @@ prettydate() {
 
 while { if [ -z "$nometa" ]; then read line; else false; fi; } do
 	case "$line" in
-		'<pmeta id="title">'*) title=$(meta "$line") ;;
-		'<pmeta id="created">'*) created=$(meta "$line" |prettydate) ;;
-		'<pmeta id="updated">'*) updated=$(meta "$line" |prettydate) ;;
-		"<pmeta"*) echo ">> some other pmeta: $(meta "$line")" >&2 ;;
-		*) nometa=1;;
+	'<pmeta id="title">'*) title=$(meta "$line") ;;
+	'<pmeta id="created">'*) created=$(meta "$line") ;;
+	'<pmeta id="updated">'*) updated=$(meta "$line") ;;
+	"<pmeta"*) echo ">> some other pmeta: $(meta "$line")" >&2 ;;
+	*) nometa=1;;
 	esac
 done
+if [ -n "$updated" ]; then modified=$updated; else modified=$created; fi
 
 cat <<HEADER
 <html>
@@ -39,6 +45,31 @@ cat <<HEADER
 <link href="/f/Nunito.css" rel="stylesheet">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Blog Atom feed" />
 HEADER
+
+case "$type" in
+person)
+cat <<LDJSON
+<script type="application/ld+json">
+{ "@context": "http://schema.org"
+, "@type": "Person"
+, "name": "Joshua Lloret"
+}
+LDJSON
+;;
+post)
+cat <<LDJSON
+<script type="application/ld+json">
+{ "@context": "http://schema.org"
+, "@type": "BlogPosting"
+, "headline": "$title"
+, "author": {"@type": "Person", "name": "Joshua Lloret"}
+, "datePublished": "$created"
+, "dateModified": "$modified"
+}
+</script>
+LDJSON
+;;
+esac
 
 while [ $# -gt 0 ]; do
 	case "$1" in
@@ -64,14 +95,15 @@ HEADER
 
 echo "<header>"
 if [ -n "$created" ]; then
-	echo -n "	<created>$created"
-	[ -n "$updated" ] && echo -n "<br/><i>updated: $updated</i>"
+	echo -n "	<created>$(prettydate "$created")"
+	[ -n "$updated" ] && echo -n "<br/><i>updated: $(prettydate "$updated")</i>"
 	echo "</created>"
 fi
 [ -n "$title" ] && echo "	<ptitle><h1>&gt;&nbsp;$title</h1></ptitle>"
 echo "</header>"
 
-(echo "$line"; cat) |pulldown-cmark
+signature='**-<a href="https://isthisa.website" rel="author">JD</a>**'
+(echo "$line"; cat; [ "$type" = "post" ] && printf "\n%s" "$signature") |pulldown-cmark
 
 cat <<FOOTER
 </div>
