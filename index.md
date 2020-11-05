@@ -7,12 +7,13 @@ I am a software engineer from the <b>&gt;</b>Philly area,
 and my current interests are [rust], [plan9], and natural languages.
 
 Here is some stuff I have made for you, the reader at home:
+- [cv](cv.pdf)
 - [some blog posts](posts.html)
 - [github://shua](https://github.com/shua)
 - [livestream muxer](https://shua.github.io/ssm)
 
 You can contact me at:
-- me@&lt;this&nbsp;domain&gt;
+- mail at isthisa dot email
 - [linkedin://jdlloret](https://www.linkedin.com/in/jdlloret)
 - <a rel="me" href="https://ruhr.social/@shua">mastodon://shua</a>
 
