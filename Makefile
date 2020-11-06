@@ -30,3 +30,5 @@ out:
 	find . -path './20??*' -type d -exec mkdir -p out/{} \;
 	find . \( \( -path './out*' -o -path './draft*' \) -prune -o -name '*.html' \) -type f -exec cp {} out/{} \;
 	cp feed.xml out/
+	cp cv.??? out/
+
