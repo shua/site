@@ -395,389 +395,16 @@
        xml:space="preserve"
        id="text1296"
        style="font-size:10.5833px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1298);" />
-    <g
-       id="g986">
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-         x="55.00526"
-         y="43.813229"
-         id="text34-6-9"><tspan
-           sodipodi:role="line"
-           id="tspan168"
-           x="55.00526"
-           y="43.813229">work experience[</tspan></text>
-      <g
-         id="g2282"
-         transform="translate(0,4.8586737)">
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="108.41264"
-           y="47.253433"
-           id="text172"><tspan
-             sodipodi:role="line"
-             id="tspan1029"
-             x="108.41264"
-             y="47.253433">: software engineer</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-           x="59.396023"
-           y="47.253433"
-           id="text38-6-8-0"><tspan
-             sodipodi:role="line"
-             id="tspan1023"
-             x="59.396023"
-             y="47.253433">{</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="64.703087"
-           y="47.253433"
-           id="text1027"><tspan
-             sodipodi:role="line"
-             id="tspan1025"
-             x="64.703087"
-             y="47.253433"
-             style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">xfinity stream</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="71.751213"
-           y="52.973698"
-           id="text1033"><tspan
-             sodipodi:role="line"
-             id="tspan1031"
-             x="71.751213"
-             y="52.973698"
-             style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">oct 2017 - present</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, weight=275';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="120.81657"
-           y="53.103806"
-           id="text1033-1"><tspan
-             sodipodi:role="line"
-             id="tspan1055"
-             x="120.81657"
-             y="53.103806">COMCAST, PHILADELPHIA, PA</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:133.299;stroke-width:0.264583"
-           x="68.402916"
-           y="63.510559"
-           id="text1059"
-           transform="translate(-1.5498092,-4.1510892)"><tspan
-             x="68.402916"
-             y="63.510559"><tspan>Worked with a team of ~20 to maintain and enhance an api gateway </tspan></tspan><tspan
-             x="68.402916"
-             y="68.80222"><tspan>written with spring, java 15. Said gateway included quite a bit of </tspan></tspan><tspan
-             x="68.402916"
-             y="74.093884"><tspan>business logic, a 100Gb in-memory data store, some home-grown </tspan></tspan><tspan
-             x="68.402916"
-             y="79.385548"><tspan>PAXOS; serviced customer apps on 6 different platforms, to a scale of </tspan></tspan><tspan
-             x="68.402916"
-             y="84.677212"><tspan>over 1.5m unique devices per hour and 27k requests per second.
-</tspan></tspan><tspan
-             x="68.402916"
-             y="89.968876"><tspan>Deployed 2-3 times/week with concourse ci, terraform, vault, ansible, </tspan></tspan><tspan
-             x="68.402916"
-             y="95.26054"><tspan>packer, aws across multiple regions
-</tspan></tspan><tspan
-             x="68.402916"
-             y="100.5522"><tspan>Tested with mockito, wiremock, pytest
-</tspan></tspan><tspan
-             x="68.402916"
-             y="105.84387"><tspan>Led multiple teams of ~4 as technical lead, architect, and technical </tspan></tspan><tspan
-             x="68.402916"
-             y="111.13553"><tspan>writer (I </tspan><tspan
-               style="font-weight:bold">really</tspan><tspan> value well-written docs)
-</tspan></tspan><tspan
-             x="68.402916"
-             y="116.4272"><tspan>Proved a new fault-tolerant data ingest pipeline with apache flink and </tspan></tspan><tspan
-             x="68.402916"
-             y="121.71886"><tspan>TLA+
-</tspan></tspan><tspan
-             x="68.402916"
-             y="127.01053"><tspan>Designed and built containerized microservice on ECS handling </tspan></tspan><tspan
-             x="68.402916"
-             y="132.30219"><tspan>content playback and licensing</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-           x="199.37747"
-           y="130.23549"
-           id="text38-6-8-0-3"><tspan
-             sodipodi:role="line"
-             id="tspan1087"
-             x="199.37747"
-             y="130.23549">},</tspan></text>
-      </g>
-      <g
-         id="g1468"
-         transform="translate(0,5.2084028)">
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="100.40596"
-           y="170.77855"
-           id="text172-0"><tspan
-             sodipodi:role="line"
-             id="tspan1029-0"
-             x="100.40596"
-             y="170.77855"
-             style="stroke-width:0.264583">: full-stack web developer</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-           x="59.396023"
-           y="170.77855"
-           id="text38-6-8-0-4"><tspan
-             sodipodi:role="line"
-             id="tspan1023-6"
-             x="59.396023"
-             y="170.77855"
-             style="stroke-width:0.264583">{</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="64.209198"
-           y="170.77855"
-           id="text1027-2"><tspan
-             sodipodi:role="line"
-             id="tspan1025-6"
-             x="64.209198"
-             y="170.77855"
-             style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">phmHealth</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="72.28038"
-           y="176.49879"
-           id="text1033-7"><tspan
-             sodipodi:role="line"
-             id="tspan1031-5"
-             x="72.28038"
-             y="176.49879"
-             style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">jul 2014 - sep 2014</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, weight=275';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="120.70226"
-           y="176.62891"
-           id="text1033-1-6"><tspan
-             sodipodi:role="line"
-             id="tspan1055-9"
-             x="120.70226"
-             y="176.62891"
-             style="stroke-width:0.264583">PHILADELPHIA, PA</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:137.959;stroke-width:0.264583"
-           x="68.402916"
-           y="63.510559"
-           id="text1059-8"
-           transform="translate(-1.3133557,119.37402)"><tspan
-             x="68.402916"
-             y="63.510559"><tspan>Prevented Healthcare fraud using NFC, BluetoothLE, and GPS 
-</tspan></tspan><tspan
-             x="68.402916"
-             y="68.80222"><tspan>Worked with REST server built on Scala PlayFramework
-</tspan></tspan><tspan
-             x="68.402916"
-             y="74.093884"><tspan>Developed web frontend using AngularJS and Bootstrap
-</tspan></tspan><tspan
-             x="68.402916"
-             y="79.385548"><tspan>Ported android mobile app to ionic/cordova</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-           x="199.37747"
-           y="199.71535"
-           id="text38-6-8-0-3-7"><tspan
-             sodipodi:role="line"
-             id="tspan1393"
-             x="199.37747"
-             y="199.71535">}]</tspan></text>
-      </g>
-      <g
-         id="g1453"
-         transform="translate(0,8.6584655)">
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="160.62762"
-           y="134.75105"
-           id="text172-0-8"><tspan
-             sodipodi:role="line"
-             id="tspan1029-0-2"
-             x="160.62762"
-             y="134.75105"
-             style="stroke-width:0.264583">: Researcher</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-           x="59.396023"
-           y="134.75105"
-           id="text38-6-8-0-4-9"><tspan
-             sodipodi:role="line"
-             id="tspan1023-6-9"
-             x="59.396023"
-             y="134.75105"
-             style="stroke-width:0.264583">{</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="64.334785"
-           y="134.75105"
-           id="text1027-2-6"><tspan
-             sodipodi:role="line"
-             id="tspan1025-6-0"
-             x="64.334785"
-             y="134.75105"
-             style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:6.35px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">Center for Networked Computing</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="72.28038"
-           y="140.04416"
-           id="text1033-7-2"><tspan
-             sodipodi:role="line"
-             id="tspan1381"
-             x="72.28038"
-             y="140.04416">jan 2015 - oct 2015</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, weight=275';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="121.0367"
-           y="140.10759"
-           id="text1033-1-6-6"><tspan
-             sodipodi:role="line"
-             id="tspan1379"
-             x="121.0367"
-             y="140.10759">TEMPLE U, PHILADELPHIA, PA</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:137.959;stroke-width:0.264583"
-           x="68.402916"
-           y="63.510559"
-           id="text1059-8-3"
-           transform="translate(-1.5990311,82.919369)"><tspan
-             x="68.402916"
-             y="63.510559"><tspan>Research using SDN routers to improve video transfer
-</tspan></tspan><tspan
-             x="68.402916"
-             y="68.80222"><tspan>Research applications of Hadoop inside Eucalyptus cluster
-</tspan></tspan><tspan
-             x="68.402916"
-             y="74.093884"><tspan>Won 2nd place at Temple Future of Computing</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-           x="199.37747"
-           y="158.99901"
-           id="text38-6-8-0-3-7-2"><tspan
-             sodipodi:role="line"
-             id="tspan1087-2-1"
-             x="199.37747"
-             y="158.99901"
-             style="stroke-width:0.264583">},</tspan></text>
-      </g>
-    </g>
-    <g
-       id="g645"
-       transform="translate(0,1.29411)">
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-         x="55.00526"
-         y="211.9868"
-         id="text34-6-9-9"><tspan
-           sodipodi:role="line"
-           id="tspan1470"
-           x="55.00526"
-           y="211.9868">other experience[</tspan></text>
-      <g
-         id="g2299"
-         transform="translate(0,-0.69708057)">
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="93.332443"
-           y="220.87563"
-           id="text172-0-9"><tspan
-             sodipodi:role="line"
-             id="tspan1645"
-             x="93.332443"
-             y="220.87563">: game engine developer</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-           x="59.396023"
-           y="220.87563"
-           id="text38-6-8-0-4-1"><tspan
-             sodipodi:role="line"
-             id="tspan1023-6-0"
-             x="59.396023"
-             y="220.87563"
-             style="stroke-width:0.264583">{</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="64.406754"
-           y="220.87563"
-           id="text1027-2-4"><tspan
-             sodipodi:role="line"
-             id="tspan1647"
-             x="64.406754"
-             y="220.87563">ducttape</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="71.61998"
-           y="226.59587"
-           id="text1033-7-22"><tspan
-             sodipodi:role="line"
-             id="tspan1649"
-             x="71.61998"
-             y="226.59587">may 2011 - may 2012</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-           x="120.81657"
-           y="226.72598"
-           id="text1033-1-6-5"><tspan
-             sodipodi:role="line"
-             id="tspan1651"
-             x="120.81657"
-             y="226.72598">COLUMBIA, SC</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:132.956;stroke-width:0.264583"
-           x="68.402916"
-           y="63.510559"
-           id="text1059-8-2"
-           transform="translate(-1.3133557,169.47109)"><tspan
-             x="68.402916"
-             y="63.510559"><tspan>Created open source C++ game engine with remote, multinational </tspan></tspan><tspan
-             x="68.402916"
-             y="68.80222"><tspan>team </tspan><tspan>using Ogre3D, BulletPhysics, SFML and Boost
-</tspan></tspan><tspan
-             x="68.402916"
-             y="74.093884"><tspan>Led team designing and creating dev tools and scene editor</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-           x="199.37747"
-           y="245.0265"
-           id="text38-6-8-0-3-7-9"><tspan
-             sodipodi:role="line"
-             id="tspan1393-0"
-             x="199.37747"
-             y="245.0265">}]</tspan></text>
-      </g>
-    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="108.41264"
+       y="52.112106"
+       id="text172"><tspan
+         sodipodi:role="line"
+         id="tspan1029"
+         x="108.41264"
+         y="52.112106">: software engineer</tspan></text>
     <g
        id="g2416"
        transform="translate(-1.4596969,-2.4991133)">
@@ -1129,133 +756,510 @@
          x="177.90184"
          y="5.0023379" />
     </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
-       x="63.445473"
-       y="63.84832"
-       id="text3859"><tspan
-         sodipodi:role="line"
-         id="tspan3861"
-         x="63.445473"
-         y="63.84832">»</tspan><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="69.139984"
-         id="tspan451" /><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="74.431641"
-         id="tspan453" /><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="79.723305"
-         id="tspan455" /><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="85.014969"
-         id="tspan457" /><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="90.306633"
-         id="tspan459">»</tspan><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="95.598297"
-         id="tspan461" /><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="100.88995"
-         id="tspan463">»</tspan><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="106.18162"
-         id="tspan465">»</tspan><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="111.47328"
-         id="tspan740" /><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="116.76494"
-         id="tspan742">»</tspan><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="122.0566"
-         id="tspan744" /><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="127.34827"
-         id="tspan746">»</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583;fill:#cccccc;"
-       x="63.445473"
-       y="149.14349"
-       id="text3859-4"><tspan
-         sodipodi:role="line"
-         id="tspan3905"
-         x="63.445473"
-         y="149.14349">»</tspan><tspan
-         sodipodi:role="line"
-         id="tspan3907"
-         x="63.445473"
-         y="154.43515">»</tspan><tspan
-         sodipodi:role="line"
-         id="tspan3909"
-         x="63.445473"
-         y="159.72682">»</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583;fill:#cccccc;"
-       x="63.445473"
-       y="181.65984"
-       id="text3859-4-9"><tspan
-         sodipodi:role="line"
-         id="tspan3905-0"
-         x="63.445473"
-         y="181.65984"
-         style="stroke-width:0.264583;fill:#cccccc;">»</tspan><tspan
-         sodipodi:role="line"
-         id="tspan3907-8"
-         x="63.445473"
-         y="186.95149"
-         style="stroke-width:0.264583;fill:#cccccc;">»</tspan><tspan
-         sodipodi:role="line"
-         id="tspan3909-8"
-         x="63.445473"
-         y="192.24316"
-         style="stroke-width:0.264583;fill:#cccccc;">»</tspan><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="197.53482"
-         style="stroke-width:0.264583;fill:#cccccc;"
-         id="tspan3951">»</tspan><tspan
-         sodipodi:role="line"
-         x="63.445473"
-         y="202.82648"
-         style="stroke-width:0.264583;fill:#cccccc;"
-         id="tspan3935" /></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583;fill:#cccccc;"
-       x="63.445473"
-       y="231.80275"
-       id="text3859-4-8"><tspan
-         sodipodi:role="line"
-         id="tspan3905-5"
-         x="63.445473"
-         y="231.80275"
-         style="stroke-width:0.264583;fill:#cccccc;">»</tspan><tspan
-         sodipodi:role="line"
-         id="tspan3907-6"
-         x="63.445473"
-         y="237.09441"
-         style="stroke-width:0.264583;fill:#cccccc;"> </tspan><tspan
-         sodipodi:role="line"
-         id="tspan3909-1"
-         x="63.445473"
-         y="242.38608"
-         style="stroke-width:0.264583;fill:#cccccc;">»</tspan></text>
+    <g
+       id="g2561">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+         x="55.00526"
+         y="43.813229"
+         id="text34-6-9"><tspan
+           sodipodi:role="line"
+           id="tspan168"
+           x="55.00526"
+           y="43.813229">work experience[</tspan></text>
+      <g
+         id="g2263">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+           x="59.396023"
+           y="52.112106"
+           id="text38-6-8-0"><tspan
+             sodipodi:role="line"
+             id="tspan1023"
+             x="59.396023"
+             y="52.112106">{</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="64.703087"
+           y="52.112106"
+           id="text1027"><tspan
+             sodipodi:role="line"
+             id="tspan1025"
+             x="64.703087"
+             y="52.112106"
+             style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">xfinity stream</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="71.751213"
+           y="57.832371"
+           id="text1033"><tspan
+             sodipodi:role="line"
+             id="tspan1031"
+             x="71.751213"
+             y="57.832371"
+             style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">oct 2017 - present</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, weight=275';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="120.81657"
+           y="57.962479"
+           id="text1033-1"><tspan
+             sodipodi:role="line"
+             id="tspan1055"
+             x="120.81657"
+             y="57.962479">COMCAST, PHILADELPHIA, PA</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+           x="199.37747"
+           y="135.09416"
+           id="text38-6-8-0-3"><tspan
+             sodipodi:role="line"
+             id="tspan1087"
+             x="199.37747"
+             y="135.09416">},</tspan></text>
+        <g
+           id="g2234">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:133.299;stroke-width:0.264583"
+             x="68.402916"
+             y="63.510559"
+             id="text1059"
+             transform="translate(-1.5498092,0.7075845)"><tspan
+               x="68.402916"
+               y="63.510559"><tspan>Worked with a team of ~20 to maintain and enhance an api gateway </tspan></tspan><tspan
+               x="68.402916"
+               y="68.80222"><tspan>written with spring, java 15. Said gateway included quite a bit of </tspan></tspan><tspan
+               x="68.402916"
+               y="74.093884"><tspan>business logic, a 100Gb in-memory data store, some home-grown </tspan></tspan><tspan
+               x="68.402916"
+               y="79.385548"><tspan>PAXOS; serviced customer apps on 6 different platforms, to a scale of </tspan></tspan><tspan
+               x="68.402916"
+               y="84.677212"><tspan>over 1.5m unique devices per hour and 27k requests per second.
+</tspan></tspan><tspan
+               x="68.402916"
+               y="89.968876"><tspan>Deployed 2-3 times/week with concourse ci, terraform, vault, ansible, </tspan></tspan><tspan
+               x="68.402916"
+               y="95.26054"><tspan>packer, aws across multiple regions
+</tspan></tspan><tspan
+               x="68.402916"
+               y="100.5522"><tspan>Tested with mockito, wiremock, pytest
+</tspan></tspan><tspan
+               x="68.402916"
+               y="105.84387"><tspan>Led multiple teams of ~4 as technical lead, architect, and technical </tspan></tspan><tspan
+               x="68.402916"
+               y="111.13553"><tspan>writer (I </tspan><tspan
+                 style="font-weight:bold">really</tspan><tspan> value well-written docs)
+</tspan></tspan><tspan
+               x="68.402916"
+               y="116.4272"><tspan>Proved a new fault-tolerant data ingest pipeline with apache flink and </tspan></tspan><tspan
+               x="68.402916"
+               y="121.71886"><tspan>TLA+
+</tspan></tspan><tspan
+               x="68.402916"
+               y="127.01053"><tspan>Designed and built containerized microservice on ECS handling </tspan></tspan><tspan
+               x="68.402916"
+               y="132.30219"><tspan>content playback and licensing</tspan></tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+             x="63.445473"
+             y="63.84832"
+             id="text3859"><tspan
+               sodipodi:role="line"
+               id="tspan3861"
+               x="63.445473"
+               y="63.84832">»</tspan><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="69.139984"
+               id="tspan451" /><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="74.431641"
+               id="tspan453" /><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="79.723305"
+               id="tspan455" /><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="85.014969"
+               id="tspan457" /><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="90.306633"
+               id="tspan459">»</tspan><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="95.598297"
+               id="tspan461" /><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="100.88995"
+               id="tspan463">»</tspan><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="106.18162"
+               id="tspan465">»</tspan><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="111.47328"
+               id="tspan740" /><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="116.76494"
+               id="tspan742">»</tspan><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="122.0566"
+               id="tspan744" /><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="127.34827"
+               id="tspan746">»</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g2321">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="160.62762"
+           y="143.40952"
+           id="text172-0-8"><tspan
+             sodipodi:role="line"
+             id="tspan1029-0-2"
+             x="160.62762"
+             y="143.40952"
+             style="stroke-width:0.264583">: Researcher</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+           x="59.396023"
+           y="143.40952"
+           id="text38-6-8-0-4-9"><tspan
+             sodipodi:role="line"
+             id="tspan1023-6-9"
+             x="59.396023"
+             y="143.40952"
+             style="stroke-width:0.264583">{</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="64.334785"
+           y="143.40952"
+           id="text1027-2-6"><tspan
+             sodipodi:role="line"
+             id="tspan1025-6-0"
+             x="64.334785"
+             y="143.40952"
+             style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:6.35px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">Center for Networked Computing</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="72.28038"
+           y="148.70262"
+           id="text1033-7-2"><tspan
+             sodipodi:role="line"
+             id="tspan1381"
+             x="72.28038"
+             y="148.70262">jan 2015 - oct 2015</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, weight=275';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="121.0367"
+           y="148.76605"
+           id="text1033-1-6-6"><tspan
+             sodipodi:role="line"
+             id="tspan1379"
+             x="121.0367"
+             y="148.76605">TEMPLE U, PHILADELPHIA, PA</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+           x="199.37747"
+           y="167.65747"
+           id="text38-6-8-0-3-7-2"><tspan
+             sodipodi:role="line"
+             id="tspan1087-2-1"
+             x="199.37747"
+             y="167.65747"
+             style="stroke-width:0.264583">},</tspan></text>
+        <g
+           id="g2295">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:137.959;stroke-width:0.264583"
+             x="68.402916"
+             y="63.510559"
+             id="text1059-8-3"
+             transform="translate(-1.5990311,91.577835)"><tspan
+               x="68.402916"
+               y="63.510559"><tspan>Research using SDN routers to improve video transfer
+</tspan></tspan><tspan
+               x="68.402916"
+               y="68.80222"><tspan>Research applications of Hadoop inside Eucalyptus cluster
+</tspan></tspan><tspan
+               x="68.402916"
+               y="74.093884"><tspan>Won 2nd place at Temple Future of Computing</tspan></tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+             x="63.445473"
+             y="155.08839"
+             id="text3859-4"><tspan
+               sodipodi:role="line"
+               id="tspan3905"
+               x="63.445473"
+               y="155.08839">»</tspan><tspan
+               sodipodi:role="line"
+               id="tspan3907"
+               x="63.445473"
+               y="160.38005">»</tspan><tspan
+               sodipodi:role="line"
+               id="tspan3909"
+               x="63.445473"
+               y="165.67172">»</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g2389">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="100.40596"
+           y="175.98695"
+           id="text172-0"><tspan
+             sodipodi:role="line"
+             id="tspan1029-0"
+             x="100.40596"
+             y="175.98695"
+             style="stroke-width:0.264583">: full-stack web developer</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+           x="59.396023"
+           y="175.98695"
+           id="text38-6-8-0-4"><tspan
+             sodipodi:role="line"
+             id="tspan1023-6"
+             x="59.396023"
+             y="175.98695"
+             style="stroke-width:0.264583">{</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="64.209198"
+           y="175.98695"
+           id="text1027-2"><tspan
+             sodipodi:role="line"
+             id="tspan1025-6"
+             x="64.209198"
+             y="175.98695"
+             style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">phmHealth</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="72.28038"
+           y="181.7072"
+           id="text1033-7"><tspan
+             sodipodi:role="line"
+             id="tspan1031-5"
+             x="72.28038"
+             y="181.7072"
+             style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583">jul 2014 - sep 2014</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, weight=275';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="120.70226"
+           y="181.83731"
+           id="text1033-1-6"><tspan
+             sodipodi:role="line"
+             id="tspan1055-9"
+             x="120.70226"
+             y="181.83731"
+             style="stroke-width:0.264583">PHILADELPHIA, PA</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+           x="199.37747"
+           y="204.92375"
+           id="text38-6-8-0-3-7"><tspan
+             sodipodi:role="line"
+             id="tspan1393"
+             x="199.37747"
+             y="204.92375">}]</tspan></text>
+        <g
+           id="g2359">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:137.959;stroke-width:0.264583"
+             x="68.402916"
+             y="63.510559"
+             id="text1059-8"
+             transform="translate(-1.3133557,124.58242)"><tspan
+               x="68.402916"
+               y="63.510559"><tspan>Prevented Healthcare fraud using NFC, BluetoothLE, and GPS 
+</tspan></tspan><tspan
+               x="68.402916"
+               y="68.80222"><tspan>Worked with REST server built on Scala PlayFramework
+</tspan></tspan><tspan
+               x="68.402916"
+               y="74.093884"><tspan>Developed web frontend using AngularJS and Bootstrap
+</tspan></tspan><tspan
+               x="68.402916"
+               y="79.385548"><tspan>Ported android mobile app to ionic/cordova</tspan></tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+             x="63.445473"
+             y="188.09299"
+             id="text3859-4-9"><tspan
+               sodipodi:role="line"
+               id="tspan3905-0"
+               x="63.445473"
+               y="188.09299"
+               style="fill:#cccccc;stroke-width:0.264583">»</tspan><tspan
+               sodipodi:role="line"
+               id="tspan3907-8"
+               x="63.445473"
+               y="193.38464"
+               style="fill:#cccccc;stroke-width:0.264583">»</tspan><tspan
+               sodipodi:role="line"
+               id="tspan3909-8"
+               x="63.445473"
+               y="198.67632"
+               style="fill:#cccccc;stroke-width:0.264583">»</tspan><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="203.96797"
+               style="fill:#cccccc;stroke-width:0.264583"
+               id="tspan3951">»</tspan><tspan
+               sodipodi:role="line"
+               x="63.445473"
+               y="209.25964"
+               style="fill:#cccccc;stroke-width:0.264583"
+               id="tspan3935" /></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g2475">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+         x="55.00526"
+         y="213.28091"
+         id="text34-6-9-9"><tspan
+           sodipodi:role="line"
+           id="tspan1470"
+           x="55.00526"
+           y="213.28091">other experience[</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+         x="93.332443"
+         y="221.47266"
+         id="text172-0-9"><tspan
+           sodipodi:role="line"
+           id="tspan1645"
+           x="93.332443"
+           y="221.47266">: game engine developer</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+         x="59.396023"
+         y="221.47266"
+         id="text38-6-8-0-4-1"><tspan
+           sodipodi:role="line"
+           id="tspan1023-6-0"
+           x="59.396023"
+           y="221.47266"
+           style="stroke-width:0.264583">{</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+         x="64.406754"
+         y="221.47266"
+         id="text1027-2-4"><tspan
+           sodipodi:role="line"
+           id="tspan1647"
+           x="64.406754"
+           y="221.47266">ducttape</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+         x="71.61998"
+         y="227.1929"
+         id="text1033-7-22"><tspan
+           sodipodi:role="line"
+           id="tspan1649"
+           x="71.61998"
+           y="227.1929">may 2011 - may 2012</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+         x="120.81657"
+         y="227.32301"
+         id="text1033-1-6-5"><tspan
+           sodipodi:role="line"
+           id="tspan1651"
+           x="120.81657"
+           y="227.32301">COLUMBIA, SC</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+         x="199.37747"
+         y="245.62354"
+         id="text38-6-8-0-3-7-9"><tspan
+           sodipodi:role="line"
+           id="tspan1393-0"
+           x="199.37747"
+           y="245.62354">}]</tspan></text>
+      <g
+         id="g2446">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:132.956;stroke-width:0.264583"
+           x="68.402916"
+           y="63.510559"
+           id="text1059-8-2"
+           transform="translate(-1.3133557,170.06812)"><tspan
+             x="68.402916"
+             y="63.510559"><tspan>Created open source C++ game engine with remote, multinational </tspan></tspan><tspan
+             x="68.402916"
+             y="68.80222"><tspan>team </tspan><tspan>using Ogre3D, BulletPhysics, SFML and Boost
+</tspan></tspan><tspan
+             x="68.402916"
+             y="74.093884"><tspan>Led team designing and creating dev tools and scene editor</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
+           x="63.445473"
+           y="233.57867"
+           id="text3859-4-8"><tspan
+             sodipodi:role="line"
+             id="tspan3905-5"
+             x="63.445473"
+             y="233.57867"
+             style="fill:#cccccc;stroke-width:0.264583">»</tspan><tspan
+             sodipodi:role="line"
+             id="tspan3907-6"
+             x="63.445473"
+             y="238.87033"
+             style="fill:#cccccc;stroke-width:0.264583"> </tspan><tspan
+             sodipodi:role="line"
+             id="tspan3909-1"
+             x="63.445473"
+             y="244.162"
+             style="fill:#cccccc;stroke-width:0.264583">»</tspan></text>
+      </g>
+    </g>
   </g>
 </svg>
