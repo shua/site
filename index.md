@@ -1,7 +1,7 @@
 # Hello There
 
 I go by many names,<br>
-but the one most appropriate here is likely <b>Joshua&nbsp;Lloret</b>.
+but the one most appropriate here is likely <b>JD&nbsp;Lloret</b>.
 
 I am a software engineer from the <b>&gt;</b>Philly area,
 and my current interests are [rust], [plan9], and natural languages.
