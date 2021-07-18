@@ -1,7 +1,8 @@
 #!/bin/sh
 
 title() {
-	title=$(head "$1" |grep '<pmeta id="title">' |sed 's/<[^>]*>//g')
+	title=$(grep '<pmeta id="title">' "$1" |sed 's/<[^>]*>//g')
+	title=${title:-$(grep '<title>' "$1" |sed 's/<[^>]*>//g')}
 	if [ -n "$title" ]; then
 		echo "$title"
 	else
@@ -10,7 +11,7 @@ title() {
 }
 
 html() {
-	echo "$1" |sed 's/.md/.html/'
+	echo "$1" |sed 's/\.md/.html/'
 }
 
 cat <<HEADER

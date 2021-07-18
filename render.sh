@@ -21,7 +21,7 @@ prettydate() {
 	y=$(echo "$date" |cut -d'-' -f1)
 	m=$(echo "$date" |cut -d'-' -f2)
 	d=$(echo "$date" |cut -d'-' -f3)
-	m=$(printf "Jan\nFeb\nMar\nApr\nJun\nJul\nAug\nSep\nOct\nNov\nDec\n" |sed -n ${m}p)
+	m=$(printf "Jan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\nNov\nDec\n" |sed -n ${m}p)
 	d=$(echo "$d" |sed 's/^0//')
 	echo "$y $m $d"
 }
